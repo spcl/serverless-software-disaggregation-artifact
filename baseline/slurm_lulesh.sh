@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH --job-name="lulesh"
 #SBATCH --account="g34"
-#SBATCH --time=01:00:00
+#SBATCH --time=04:00:00
 ##SBATCH --nodes=1
 #SBATCH --ntasks-per-core=1
 #SBATCH --ntasks-per-node=${RANKS_PER_NODE}
@@ -32,7 +32,7 @@ cd ${OUTPUT_DIR}
 mkdir -p lulesh_${RANKS_PER_NODE}
 cd lulesh_${RANKS_PER_NODE}
 #for size in 10 15 18 20 25; do
-for size in 30; do
+for size in 35; do
 
 	for rep in 0 1 2 3 4 5 6 7 8 9; do
 		START=$(date +%s.%N)
