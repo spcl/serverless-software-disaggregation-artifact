@@ -1,0 +1,182 @@
+cpu-bind-cores=MAP  - nid00722, task  2  2 [71512]: mask 0x400000000 set
+cpu-bind-cores=MAP  - nid00722, task  0  0 [71510]: mask 0x10000 set
+cpu-bind-cores=MAP  - nid00722, task  1  1 [71511]: mask 0x20000 set
+cpu-bind-cores=MAP  - nid00722, task  3  3 [71513]: mask 0x800000000 set
+cpu-bind-cores=MAP  - nid01138, task  4  0 [40681]: mask 0x10000 set
+cpu-bind-cores=MAP  - nid01138, task  7  3 [40684]: mask 0x800000000 set
+cpu-bind-cores=MAP  - nid01138, task  5  1 [40682]: mask 0x20000 set
+cpu-bind-cores=MAP  - nid01138, task  6  2 [40683]: mask 0x400000000 set
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+[3722424.644722918] [nid00722-72625] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3722424.645000583] [nid00722-72624] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3722424.645530388] [nid00722-72622] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3722424.645554846] [nid00722-72623] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3722425.135849340] [nid01138-41794] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3722425.136087133] [nid01138-41795] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3722425.136322859] [nid01138-41797] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3722425.136627081] [nid01138-41796] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+MPICH2 ERROR [Rank 4] [job id 2259190253077] [Fri Apr  1 13:40:08 2022] [c5-0c2s12n2] [nid01138] - MPIU_nem_gni_mdds_avail(): GNI_GetJobResInfo(GNI_JOB_RES_MDD) returned GNI_RC_INVALID_PARAM
+
+Rank 4 [Fri Apr  1 13:40:08 2022] [c5-0c2s12n2] Fatal error in MPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(537)..: 
+MPID_Init(296).........: channel initialization failed
+MPIDI_CH3_Init(102)....: 
+MPID_nem_init(367).....: 
+MPID_nem_gni_init(1776):  MPIU_nem_gni_mdds_avail failed
+
+Program received signal SIGABRT: Process abort signal.
+
+Backtrace for this error:
+#0  0x7ffff75f90bf in ???
+#1  0x7ffff75f903b in ???
+#2  0x7ffff75d8858 in ???
+#3  0x7ffff71f51d7 in ???
+#4  0x7ffff717e031 in ???
+#5  0x7ffff717e125 in ???
+#6  0x7ffff7102933 in ???
+#7  0x7ffff714fd06 in ???
+#8  0x555555557bc1 in ???
+#9  0x555555557c9a in ???
+#10  0x55555555527e in ???
+#11  0x7ffff75da0b2 in ???
+#12  0x5555555552bd in ???
+#13  0xffffffffffffffff in ???
+Fri Apr  1 13:40:08 2022: [PE_0]:inet_recv:inet_recv: unexpected EOF Success
+Fri Apr  1 13:40:08 2022: [PE_0]:_pmi_network_allgather:_pmi_inet_recv from target 0 failed
+Fri Apr  1 13:40:08 2022: [PE_0]:_pmi_allgather:_pmi_network_allgather failed
+Fri Apr  1 13:40:08 2022: [PE_0]:_pmi2_kvs_get:key [P4-businesscard] was not found.
+Fri Apr  1 13:40:08 2022: [PE_0]:PMI2_KVS_Get:_pmi2_kvs_get failed
+Fri Apr  1 13:40:08 2022: [PE_1]:_pmi2_kvs_get:key [P5-businesscard] was not found.
+Fri Apr  1 13:40:08 2022: [PE_1]:PMI2_KVS_Get:_pmi2_kvs_get failed
+Fri Apr  1 13:40:08 2022: [PE_2]:_pmi2_kvs_get:key [P6-businesscard] was not found.
+Fri Apr  1 13:40:08 2022: [PE_3]:_pmi2_kvs_get:key [P7-businesscard] was not found.
+Fri Apr  1 13:40:08 2022: [PE_2]:PMI2_KVS_Get:_pmi2_kvs_get failed
+Fri Apr  1 13:40:08 2022: [PE_3]:PMI2_KVS_Get:_pmi2_kvs_get failed
+Rank 0 [Fri Apr  1 13:40:08 2022] [c3-0c2s4n2] Fatal error in MPI_Init: Other MPI error, error stack:
+MPIDI_CRAY_ugni_coll_init(373)..........: 
+MPIR_CRAY_Allgather(95).................: 
+MPIR_Allgather(809).....................: 
+MPIR_Allgather_intra(224)...............: 
+MPIC_Sendrecv(548)......................: 
+MPIDI_EagerContigIsend(612).............: failure occurred while attempting to send an eager message
+MPID_nem_gni_iSendContig(1319)..........: 
+MPID_nem_gni_iSendContig_start(1155)....: 
+MPID_nem_gni_smsg_cm_send_conn_req(1128): 
+MPID_nem_gni_smsg_cm_progress_req(341)..: 
+getConnInfoKVS(749).....................:  PMI2 KVS_Get failed
+Rank 3 [Fri Apr  1 13:40:08 2022] [c3-0c2s4n2] Fatal error in MPI_Init: Other MPI error, error stack:
+MPIDI_CRAY_ugni_coll_init(373)..........: 
+MPIR_CRAY_Allgather(95).................: 
+MPIR_Allgather(809).....................: 
+MPIR_Allgather_intra(224)...............: 
+MPIC_Sendrecv(548)......................: 
+MPIDI_EagerContigIsend(612).............: failure occurred while attempting to send an eager message
+MPID_nem_gni_iSendContig(1319)..........: 
+MPID_nem_gni_iSendContig_start(1155)....: 
+MPID_nem_gni_smsg_cm_send_conn_req(1128): 
+MPID_nem_gni_smsg_cm_progress_req(341)..: 
+getConnInfoKVS(749).....................:  PMI2 KVS_Get failed
+
+Program received signal SIGABRT: Process abort signal.
+Rank 1 [Fri Apr  1 13:40:08 2022] [c3-0c2s4n2] Fatal error in MPI_Init: Other MPI error, error stack:
+MPIDI_CRAY_ugni_coll_init(373)..........: 
+MPIR_CRAY_Allgather(95).................: 
+MPIR_Allgather(809).....................: 
+MPIR_Allgather_intra(224)...............: 
+MPIC_Sendrecv(548)......................: 
+MPIDI_EagerContigIsend(612).............: failure occurred while attempting to send an eager message
+MPID_nem_gni_iSendContig(1319)..........: 
+MPID_nem_gni_iSendContig_start(1155)....: 
+MPID_nem_gni_smsg_cm_send_conn_req(1128): 
+MPID_nem_gni_smsg_cm_progress_req(341)..: 
+getConnInfoKVS(749).....................:  PMI2 KVS_Get failed
+
+Program received signal SIGABRT: Process abort signal.
+
+Backtrace for this error:
+
+Backtrace for this error:
+
+Program received signal SIGABRT: Process abort signal.
+
+Backtrace for this error:
+Rank 2 [Fri Apr  1 13:40:08 2022] [c3-0c2s4n2] Fatal error in MPI_Init: Other MPI error, error stack:
+MPIDI_CRAY_ugni_coll_init(373)..........: 
+MPIR_CRAY_Allgather(95).................: 
+MPIR_Allgather(809).....................: 
+MPIR_Allgather_intra(224)...............: 
+MPIC_Sendrecv(548)......................: 
+MPIDI_EagerContigIsend(612).............: failure occurred while attempting to send an eager message
+MPID_nem_gni_iSendContig(1319)..........: 
+MPID_nem_gni_iSendContig_start(1155)....: 
+MPID_nem_gni_smsg_cm_send_conn_req(1128): 
+MPID_nem_gni_smsg_cm_progress_req(341)..: 
+getConnInfoKVS(749).....................:  PMI2 KVS_Get failed
+
+Program received signal SIGABRT: Process abort signal.
+
+Backtrace for this error:
+#0  0x7ffff75f90bf in ???
+#1  0x7ffff75f903b in ???
+#2  0x7ffff75d8858 in ???
+#3  0x7ffff71f51d7 in ???
+#4  0x7ffff717e031 in ???
+#5  0x7ffff717e16d in ???
+#6  0x7ffff7102933 in ???
+#7  0x7ffff714fd06 in ???
+#8  0x555555557bc1 in ???
+#9  0x555555557c9a in ???
+#10  0x55555555527e in ???
+#11  0x7ffff75da0b2 in ???
+#12  0x5555555552bd in ???
+#13  0xffffffffffffffff in ???
+#0  0x7ffff75f90bf in ???
+#1  0x7ffff75f903b in ???
+#2  0x7ffff75d8858 in ???
+#3  0x7ffff71f51d7 in ???
+#4  0x7ffff717e031 in ???
+#5  0x7ffff717e16d in ???
+#6  0x7ffff7102933 in ???
+#7  0x7ffff714fd06 in ???
+#8  0x555555557bc1 in ???
+#9  0x555555557c9a in ???
+#10  0x55555555527e in ???
+#11  0x7ffff75da0b2 in ???
+#12  0x5555555552bd in ???
+#13  0xffffffffffffffff in ???
+#0  0x7ffff75f90bf in ???
+#1  0x7ffff75f903b in ???
+#2  0x7ffff75d8858 in ???
+#3  0x7ffff71f51d7 in ???
+#4  0x7ffff717e031 in ???
+#5  0x7ffff717e16d in ???
+#6  0x7ffff7102933 in ???
+#7  0x7ffff714fd06 in ???
+#8  0x555555557bc1 in ???
+#9  0x555555557c9a in ???
+#10  0x55555555527e in ???
+#11  0x7ffff75da0b2 in ???
+#12  0x5555555552bd in ???
+#13  0xffffffffffffffff in ???
+#0  0x7ffff75f90bf in ???
+#1  0x7ffff75f903b in ???
+#2  0x7ffff75d8858 in ???
+#3  0x7ffff71f51d7 in ???
+#4  0x7ffff717e031 in ???
+#5  0x7ffff717e16d in ???
+#6  0x7ffff7102933 in ???
+#7  0x7ffff714fd06 in ???
+#8  0x555555557bc1 in ???
+#9  0x555555557c9a in ???
+#10  0x55555555527e in ???
+#11  0x7ffff75da0b2 in ???
+#12  0x5555555552bd in ???
+#13  0xffffffffffffffff in ???
+slurmstepd: error: *** STEP 37455381.526 ON nid00722 CANCELLED AT 2022-04-01T15:40:09 ***
