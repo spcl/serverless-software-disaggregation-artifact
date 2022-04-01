@@ -73,5 +73,37 @@ for rep in 0 1 2 3 4 5 6 7 8 9; do
 	END=$(date +%s.%N)
 	DIFF=$(echo "$END - $START" | bc)
 	echo $DIFF >> ${app}_${size}.full.times
+
+	app="mg"
+	START=$(date +%s.%N)
+	srun sarus run --mpi --mount=type=bind,source=$SCRATCH,destination=$SCRATCH load/mcopik/disagg:nas /usr/bin/time --append --output-file=${OUTPUT_DIR}/nas_sarus_${SLURM_NTASKS}/${app}_${size}.times /opt/NPB3.4-MPI/bin/${app}.${size}.x > nas_${app}_${size}_${rep}.out 2>&1
+	END=$(date +%s.%N)
+	DIFF=$(echo "$END - $START" | bc)
+	echo $DIFF >> ${app}_${size}.full.times
+done
+
+size="B"
+for rep in 0 1 2 3 4 5 6 7 8 9; do
+
+	app="ep"
+	START=$(date +%s.%N)
+	srun sarus run --mpi --mount=type=bind,source=$SCRATCH,destination=$SCRATCH load/mcopik/disagg:nas /usr/bin/time --append --output-file=${OUTPUT_DIR}/nas_sarus_${SLURM_NTASKS}/${app}_${size}.times /opt/NPB3.4-MPI/bin/${app}.${size}.x > nas_${app}_${size}_${rep}.out 2>&1
+	END=$(date +%s.%N)
+	DIFF=$(echo "$END - $START" | bc)
+	echo $DIFF >> ${app}_${size}.full.times
+
+	app="ft"
+	START=$(date +%s.%N)
+	srun sarus run --mpi --mount=type=bind,source=$SCRATCH,destination=$SCRATCH load/mcopik/disagg:nas /usr/bin/time --append --output-file=${OUTPUT_DIR}/nas_sarus_${SLURM_NTASKS}/${app}_${size}.times /opt/NPB3.4-MPI/bin/${app}.${size}.x > nas_${app}_${size}_${rep}.out 2>&1
+	END=$(date +%s.%N)
+	DIFF=$(echo "$END - $START" | bc)
+	echo $DIFF >> ${app}_${size}.full.times
+
+	app="mg"
+	START=$(date +%s.%N)
+	srun sarus run --mpi --mount=type=bind,source=$SCRATCH,destination=$SCRATCH load/mcopik/disagg:nas /usr/bin/time --append --output-file=${OUTPUT_DIR}/nas_sarus_${SLURM_NTASKS}/${app}_${size}.times /opt/NPB3.4-MPI/bin/${app}.${size}.x > nas_${app}_${size}_${rep}.out 2>&1
+	END=$(date +%s.%N)
+	DIFF=$(echo "$END - $START" | bc)
+	echo $DIFF >> ${app}_${size}.full.times
 done
 

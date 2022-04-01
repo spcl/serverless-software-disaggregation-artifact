@@ -59,6 +59,20 @@ for rep in 0 1 2 3 4 5 6 7 8 9; do
 	END=$(date +%s.%N)
 	DIFF=$(echo "$END - $START" | bc)
 	echo $DIFF >> ${app}_${size}.full.times
+
+	app="ep"
+	START=$(date +%s.%N)
+	srun /usr/bin/time --append --output-file=${app}_${size}.times ${BINARY_DIR}/${app}.${size}.x > nas_${app}_${size}_${rep}.out 2>&1
+	END=$(date +%s.%N)
+	DIFF=$(echo "$END - $START" | bc)
+	echo $DIFF >> ${app}_${size}.full.times
+
+	app="ft"
+	START=$(date +%s.%N)
+	srun /usr/bin/time --append --output-file=${app}_${size}.times ${BINARY_DIR}/${app}.${size}.x > nas_${app}_${size}_${rep}.out 2>&1
+	END=$(date +%s.%N)
+	DIFF=$(echo "$END - $START" | bc)
+	echo $DIFF >> ${app}_${size}.full.times
 done
 
 size="W"
