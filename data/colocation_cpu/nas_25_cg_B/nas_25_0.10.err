@@ -1,0 +1,80 @@
+cpu-bind-cores=MAP  - nid00722, task  0  0 [27139]: mask 0x10000 set
+cpu-bind-cores=MAP  - nid00722, task  1  1 [27140]: mask 0x20000 set
+cpu-bind-cores=MAP  - nid00722, task  2  2 [27141]: mask 0x400000000 set
+cpu-bind-cores=MAP  - nid00722, task  3  3 [27142]: mask 0x800000000 set
+cpu-bind-cores=MAP  - nid01138, task  4  0 [21438]: mask 0x10000 set
+cpu-bind-cores=MAP  - nid01138, task  5  1 [21439]: mask 0x20000 set
+cpu-bind-cores=MAP  - nid01138, task  6  2 [21440]: mask 0x400000000 set
+cpu-bind-cores=MAP  - nid01138, task  7  3 [21441]: mask 0x800000000 set
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+[3717088.999422086] [nid00722-28252] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3717088.999573631] [nid00722-28253] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3717088.999990282] [nid00722-28254] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3717089.203556] [nid00722-28255] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3717089.485402160] [nid01138-22555] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3717089.486083704] [nid01138-22558] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3717089.486424542] [nid01138-22556] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+[3717089.486522271] [nid01138-22557] [MPI hook] [WARN] WARNING: could not find ABI-compatible counterpart for host lib ("/usr/lib64/libpcre.so.1") inside container (best candidate found: "/lib/x86_64-linux-gnu/libpcre.so.3") => adding host lib ("/usr/lib64/libpcre.so.1") into container's /lib via bind mount 
+MPICH2 ERROR [Rank 0] [job id 270620395029] [Fri Apr  1 12:11:12 2022] [c3-0c2s4n2] [nid00722] - MPIU_nem_gni_mdds_avail(): GNI_GetJobResInfo(GNI_JOB_RES_MDD) returned GNI_RC_INVALID_PARAM
+
+Rank 0 [Fri Apr  1 12:11:12 2022] [c3-0c2s4n2] Fatal error in MPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(537)..: 
+MPID_Init(296).........: channel initialization failed
+MPIDI_CH3_Init(102)....: 
+MPID_nem_init(367).....: 
+MPID_nem_gni_init(1776):  MPIU_nem_gni_mdds_avail failed
+
+Program received signal SIGABRT: Process abort signal.
+
+Backtrace for this error:
+#0  0x7ffff75f90bf in ???
+#1  0x7ffff75f903b in ???
+#2  0x7ffff75d8858 in ???
+#3  0x7ffff71f51d7 in ???
+#4  0x7ffff717e031 in ???
+#5  0x7ffff717e125 in ???
+#6  0x7ffff7102933 in ???
+#7  0x7ffff714fd06 in ???
+#8  0x555555557bc1 in ???
+#9  0x555555557c9a in ???
+#10  0x55555555527e in ???
+#11  0x7ffff75da0b2 in ???
+#12  0x5555555552bd in ???
+#13  0xffffffffffffffff in ???
+Fri Apr  1 12:11:12 2022: [PE_4]:inet_recv:inet_recv: recv error (fd=8) Connection reset by peer
+Fri Apr  1 12:11:12 2022: [PE_4]:_pmi_network_allgather:_pmi_inet_recv from controller failed
+Fri Apr  1 12:11:12 2022: [PE_4]:_pmi_allgather:_pmi_network_allgather failed
+Fri Apr  1 12:11:12 2022: [PE_4]:_pmi2_kvs_fence:_pmi_allgather failed
+Fri Apr  1 12:11:12 2022: [PE_4]:PMI2_KVS_Fence:_pmi2_kvs_fence failed
+Rank 4 [Fri Apr  1 12:11:12 2022] [c5-0c2s12n2] Fatal error in MPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(537)....: 
+MPID_Init(296)...........: channel initialization failed
+MPIDI_CH3_Init(102)......: 
+MPID_nem_init(456).......: 
+MPIDI_PG_SetConnInfo(653):  PMI2 KVS_Fence failed
+
+Program received signal SIGABRT: Process abort signal.
+
+Backtrace for this error:
+#0  0x7ffff75f90bf in ???
+#1  0x7ffff75f903b in ???
+#2  0x7ffff75d8858 in ???
+#3  0x7ffff71f51d7 in ???
+#4  0x7ffff717e031 in ???
+#5  0x7ffff717e125 in ???
+#6  0x7ffff7102933 in ???
+#7  0x7ffff714fd06 in ???
+#8  0x555555557bc1 in ???
+#9  0x555555557c9a in ???
+#10  0x55555555527e in ???
+#11  0x7ffff75da0b2 in ???
+#12  0x5555555552bd in ???
+#13  0xffffffffffffffff in ???
+slurmstepd: error: *** STEP 37455381.63 ON nid00722 CANCELLED AT 2022-04-01T14:11:14 ***
