@@ -1,0 +1,13 @@
+FROM nvidia/cuda:10.2-devel as builder
+
+RUN mkdir /rodinia
+COPY myocyte/ /rodinia/
+RUN apt-get update && apt-get install -y git --no-install-recommends
+RUN cd /rodinia/ && make
+#RUN git clone https://github.com/NVIDIA/cuda-samples.git /opt/cuda_samples && cd /opt/cuda_samples && git fetch origin --tags && git checkout v10.2 && cd Samples/deviceQuery && make
+
+FROM nvidia/cuda:10.2-runtime 
+COPY --from=builder /opt/ /opt/
+COPY --from=builder /rodinia/ /rodinia/
+
+
