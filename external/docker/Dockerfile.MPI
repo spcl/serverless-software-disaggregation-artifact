@@ -1,0 +1,5 @@
+FROM ubuntu:20.04
+
+RUN apt-get update && apt-get install -y file g++ gcc gfortran make gdb strace wget ca-certificates --no-install-recommends
+RUN wget -q http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gz && tar xf mpich-3.1.4.tar.gz && cd mpich-3.1.4 && ./configure --enable-fast=all,O3 --prefix=/opt/ && make -j$(nproc) && make install && ldconfig
+
