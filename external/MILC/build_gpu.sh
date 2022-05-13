@@ -1,12 +1,12 @@
 #!/bin/bash
 
-module switch daint-gpu daint-mc
-module load daint-mc
-cp -r milc_qcd-7.8.1 milc_qcd-7.8.1-mc
-cp Makefile milc_qcd-7.8.1-mc
-cp Makefile milc_qcd-7.8.1-mc/ks_imp_dyn
-cp control.c milc_qcd-7.8.1-mc/ks_imp_dyn
-cd milc_qcd-7.8.1-mc/ks_imp_dyn
+module switch daint-mc daint-gpu
+module load daint-gpu
+cp -r milc_qcd-7.8.1 milc_qcd-7.8.1-gpu
+cp Makefile milc_qcd-7.8.1-gpu
+cp Makefile milc_qcd-7.8.1-gpu/ks_imp_dyn
+cp control.c milc_qcd-7.8.1-gpu/ks_imp_dyn
+cd milc_qcd-7.8.1-gpu/ks_imp_dyn
 make clean
 make
 # repeat after failed test
