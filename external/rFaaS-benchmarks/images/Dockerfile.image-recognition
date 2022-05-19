@@ -1,0 +1,23 @@
+
+FROM spcleth/hpc-disagg:rfaas-dependencies-opencv as opencv
+FROM spcleth/hpc-disagg:rfaas-dependencies-torchvision-cpu as builder
+
+COPY --from=opencv /opt/ /opt/
+
+COPY image-recognition/ ${HOME}/image-recognition/
+RUN mkdir build_img && cd build_img && cmake -DCMAKE_PREFIX_PATH="/opt/opencv/lib64/cmake/opencv4;/opt/torchvision/share/cmake/TorchVision;/opt/libtorch/share/cmake/Torch" -DCMAKE_BUILD_TYPE=Release ../image-recognition && make
+
+FROM ubuntu:21.04
+
+COPY --from=builder /opt/ /opt/
+ENV LD_LIBRARY_PATH=/function
+
+
+RUN mkdir ${HOME}/function
+COPY --from=builder ${HOME}/build_img/test-client ${HOME}/function/
+COPY --from=builder ${HOME}/build_img/libimage-recognition.so ${HOME}/function/
+COPY image-recognition/resnet50.pt ${HOME}/function/
+COPY image-recognition/800px-Jammlich_crop.jpg ${HOME}/function/
+COPY image-recognition/800px-Sardinian_Warbler.jpg ${HOME}/function/
+COPY image-recognition/800px-20180630_Tesla_Model_S_70D_2015_midnight_blue_left_front.jpg ${HOME}/function/
+
