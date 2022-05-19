@@ -1,0 +1,1013 @@
+SU3 with improved KS action
+Microcanonical simulation with refreshing
+R algorithm
+MIMD version 7.8.1
+Machine = MPI (portable), with 32 nodes
+Host(0) = ault03.cscs.ch
+Username = mcopik
+Options selected...
+Generic single precision
+C_GLOBAL_INLINE
+DBLSTORE_FN
+D_FN_GATHER13
+FEWSUMS
+KS_MULTIFF=FNMAT
+VECLENGTH=4
+type 0 for no prompts, 1 for prompts, or 2 for proofreading
+nflavors1 2
+nflavors2 1
+nx 24
+ny 16
+nz 8
+nt 36
+iseed 5682304
+LAYOUT = Hypercubes, options = hyper_prime,
+automatic hyper_prime layout
+ON EACH NODE 6 x 8 x 8 x 9
+Mallocing 3.4 MBytes per node for lattice
+WARNING!!: Resetting random seed
+Made lattice
+Made nn gathers
+Made 3nn gathers
+Finished setup
+
+
+warms 0
+trajecs 4
+traj_between_meas 1
+beta 5.6
+mass1 0.125
+mass2 0.125
+u0 0.8441
+microcanonical_time_step 0.2
+steps_per_trajectory 5
+max_cg_iterations 100
+max_cg_restarts 5
+error_per_site 0.125
+error_for_propagator 0.125
+npbp_reps 1
+prec_pbp 1
+fresh 
+save_parallel lat_p64_size128_1
+unit gauge configuration loaded
+CHECK PLAQ: 3.000000e+00 3.000000e+00
+CHECK NERSC LINKTR: 1.000000e+00 CKSUM: 0
+Unitarity checked.  Max deviation 0.00e+00
+Time to check unitarity = 7.960796e-04
+"O(a^2): couplings(pi)=0, Naik term, No O(a^2) errors, tadpole weights"
+path coefficients: npath  path_coeff  multiplicity
+                    0      6.250000e-01     8
+                    1      -5.847914e-02     8
+                    2      -8.771871e-02     48
+                    3      3.077829e-02     192
+                    4      -7.199551e-03     384
+                    5      -1.231132e-01     48
+Symanzik 1x1 + 1x2 + 1x1x1 action
+gauge_action: total_dyn_flavors = 3
+loop coefficients: nloop rep loop_coeff  multiplicity
+                    0 0      1.000000e+00     6
+                    1 0      -7.762509e-02     12
+                    2 0      -1.031171e-02     16
+WARMUPS COMPLETED
+CONGRAD5: time = 6.985903e-03 (fn F) masses = 1 iters = 4 mflops = 2.348886e+03
+ OK converged final_rsq= 0.006 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 6.623983e-03 (fn F) masses = 1 iters = 4 mflops = 2.477224e+03
+ OK converged final_rsq= 0.0059 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.348929e-01 (Symanzik1) mflops = 3.920011e+03
+FFTIME:  time = 5.011880e-01 (asqtad3) terms = 2 mflops = 2.992476e+03
+CONGRAD5: time = 6.743908e-03 (fn F) masses = 1 iters = 4 mflops = 2.433172e+03
+ OK converged final_rsq= 0.01 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 6.606102e-03 (fn F) masses = 1 iters = 4 mflops = 2.483929e+03
+ OK converged final_rsq= 0.0098 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.345701e-01 (Symanzik1) mflops = 3.929415e+03
+FFTIME:  time = 5.012920e-01 (asqtad3) terms = 2 mflops = 2.991856e+03
+CONGRAD5: time = 6.801844e-03 (fn F) masses = 1 iters = 4 mflops = 2.412447e+03
+ OK converged final_rsq= 0.014 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 6.617069e-03 (fn F) masses = 1 iters = 4 mflops = 2.479812e+03
+ OK converged final_rsq= 0.014 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.336150e-01 (Symanzik1) mflops = 3.957503e+03
+FFTIME:  time = 4.998622e-01 (asqtad3) terms = 2 mflops = 3.000414e+03
+CONGRAD5: time = 6.821156e-03 (fn F) masses = 1 iters = 4 mflops = 2.405617e+03
+ OK converged final_rsq= 0.013 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 6.631136e-03 (fn F) masses = 1 iters = 4 mflops = 2.474552e+03
+ OK converged final_rsq= 0.013 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.347201e-01 (Symanzik1) mflops = 3.925041e+03
+FFTIME:  time = 4.994500e-01 (asqtad3) terms = 2 mflops = 3.002890e+03
+CONGRAD5: time = 6.771088e-03 (fn F) masses = 1 iters = 4 mflops = 2.423405e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 6.587982e-03 (fn F) masses = 1 iters = 4 mflops = 2.490761e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.346350e-01 (Symanzik1) mflops = 3.927522e+03
+FFTIME:  time = 4.994280e-01 (asqtad3) terms = 2 mflops = 3.003022e+03
+PLAQ:	2.349198	2.348190
+P_LOOP:	2.786892e-03	-1.250431e-02
+G_LOOP:  0  0  4   	2.348389e+00	( 0 1 7 6  )
+G_LOOP:  0  1  4   	2.349309e+00	( 0 2 7 5  )
+G_LOOP:  0  2  4   	2.348361e+00	( 0 3 7 4  )
+G_LOOP:  0  3  4   	2.349895e+00	( 1 2 6 5  )
+G_LOOP:  0  4  4   	2.348625e+00	( 1 3 6 4  )
+G_LOOP:  0  5  4   	2.347583e+00	( 2 3 5 4  )
+G_LOOP:  1  0  6   	1.773790e+00	( 0 0 1 7 7 6  )
+G_LOOP:  1  1  6   	1.776646e+00	( 0 0 2 7 7 5  )
+G_LOOP:  1  2  6   	1.774103e+00	( 0 0 3 7 7 4  )
+G_LOOP:  1  3  6   	1.776491e+00	( 1 1 0 6 6 7  )
+G_LOOP:  1  4  6   	1.777582e+00	( 1 1 2 6 6 5  )
+G_LOOP:  1  5  6   	1.775662e+00	( 1 1 3 6 6 4  )
+G_LOOP:  1  6  6   	1.775503e+00	( 2 2 0 5 5 7  )
+G_LOOP:  1  7  6   	1.778237e+00	( 2 2 1 5 5 6  )
+G_LOOP:  1  8  6   	1.771448e+00	( 2 2 3 5 5 4  )
+G_LOOP:  1  9  6   	1.773505e+00	( 3 3 0 4 4 7  )
+G_LOOP:  1  10  6   	1.774021e+00	( 3 3 1 4 4 6  )
+G_LOOP:  1  11  6   	1.774669e+00	( 3 3 2 4 4 5  )
+G_LOOP:  2  0  6   	1.825091e+00	( 0 1 2 7 6 5  )
+G_LOOP:  2  1  6   	1.823287e+00	( 0 1 5 7 6 2  )
+G_LOOP:  2  2  6   	1.821088e+00	( 0 6 2 7 1 5  )
+G_LOOP:  2  3  6   	1.822105e+00	( 0 6 5 7 1 2  )
+G_LOOP:  2  4  6   	1.824212e+00	( 0 1 3 7 6 4  )
+G_LOOP:  2  5  6   	1.820812e+00	( 0 1 4 7 6 3  )
+G_LOOP:  2  6  6   	1.819790e+00	( 0 6 3 7 1 4  )
+G_LOOP:  2  7  6   	1.820252e+00	( 0 6 4 7 1 3  )
+G_LOOP:  2  8  6   	1.823634e+00	( 0 2 3 7 5 4  )
+G_LOOP:  2  9  6   	1.819915e+00	( 0 2 4 7 5 3  )
+G_LOOP:  2  10  6   	1.821587e+00	( 0 5 3 7 2 4  )
+G_LOOP:  2  11  6   	1.821800e+00	( 0 5 4 7 2 3  )
+G_LOOP:  2  12  6   	1.820839e+00	( 1 2 3 6 5 4  )
+G_LOOP:  2  13  6   	1.823189e+00	( 1 2 4 6 5 3  )
+G_LOOP:  2  14  6   	1.819091e+00	( 1 5 3 6 2 4  )
+G_LOOP:  2  15  6   	1.822278e+00	( 1 5 4 6 2 3  )
+GACTION: 2.572492e+00
+CONGRAD5: time = 6.803989e-03 (fn F) masses = 1 iters = 4 mflops = 2.411686e+03
+ OK converged final_rsq= 0.01 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 8.627176e-03 (fn F) masses = 1 iters = 6 mflops = 2.853035e+03
+ OK converged final_rsq= 0.0087 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 6
+PBP: mass 1.250000e-01     6.806275e-02  1.030895e-01  8.483080e-04  9.597723e-04 ( 1 of 1 )
+FACTION: mass = 1.250000e-01,  1.463830e+00 ( 1 of 1 )
+CONGRAD5: time = 6.617069e-03 (fn F) masses = 1 iters = 4 mflops = 2.479812e+03
+ OK converged final_rsq= 0.01 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 8.605957e-03 (fn F) masses = 1 iters = 6 mflops = 2.860069e+03
+ OK converged final_rsq= 0.0085 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 6
+PBP: mass 1.250000e-01     6.882193e-02  1.016555e-01  -1.014163e-03  -6.058347e-04 ( 1 of 1 )
+FACTION: mass = 1.250000e-01,  1.471104e+00 ( 1 of 1 )
+CONGRAD5: time = 6.741047e-03 (fn F) masses = 1 iters = 4 mflops = 2.434205e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 6.677151e-03 (fn F) masses = 1 iters = 4 mflops = 2.457499e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.353421e-01 (Symanzik1) mflops = 3.907001e+03
+FFTIME:  time = 4.996631e-01 (asqtad3) terms = 2 mflops = 3.001609e+03
+CONGRAD5: time = 7.817984e-03 (fn F) masses = 1 iters = 5 mflops = 2.623613e+03
+ OK converged final_rsq= 0.007 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 6.631136e-03 (fn F) masses = 1 iters = 4 mflops = 2.474552e+03
+ OK converged final_rsq= 0.015 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.340110e-01 (Symanzik1) mflops = 3.945808e+03
+FFTIME:  time = 5.024791e-01 (asqtad3) terms = 2 mflops = 2.984788e+03
+CONGRAD5: time = 7.844925e-03 (fn F) masses = 1 iters = 5 mflops = 2.614602e+03
+ OK converged final_rsq= 0.0088 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.620096e-03 (fn F) masses = 1 iters = 5 mflops = 2.691746e+03
+ OK converged final_rsq= 0.0085 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.340380e-01 (Symanzik1) mflops = 3.945015e+03
+FFTIME:  time = 4.989748e-01 (asqtad3) terms = 2 mflops = 3.005750e+03
+CONGRAD5: time = 7.774830e-03 (fn F) masses = 1 iters = 5 mflops = 2.638175e+03
+ OK converged final_rsq= 0.0085 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.634878e-03 (fn F) masses = 1 iters = 5 mflops = 2.686534e+03
+ OK converged final_rsq= 0.0081 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.341949e-01 (Symanzik1) mflops = 3.940403e+03
+FFTIME:  time = 5.024860e-01 (asqtad3) terms = 2 mflops = 2.984747e+03
+CONGRAD5: time = 6.958961e-03 (fn F) masses = 1 iters = 4 mflops = 2.357979e+03
+ OK converged final_rsq= 0.016 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 6.701946e-03 (fn F) masses = 1 iters = 4 mflops = 2.448406e+03
+ OK converged final_rsq= 0.015 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.392999e-01 (Symanzik1) mflops = 3.795997e+03
+FFTIME:  time = 5.080380e-01 (asqtad3) terms = 2 mflops = 2.952128e+03
+PLAQ:	2.013451	2.012694
+P_LOOP:	1.848458e-02	-2.834589e-03
+G_LOOP:  0  0  4   	2.013605e+00	( 0 1 7 6  )
+G_LOOP:  0  1  4   	2.012726e+00	( 0 2 7 5  )
+G_LOOP:  0  2  4   	2.012660e+00	( 0 3 7 4  )
+G_LOOP:  0  3  4   	2.014021e+00	( 1 2 6 5  )
+G_LOOP:  0  4  4   	2.011083e+00	( 1 3 6 4  )
+G_LOOP:  0  5  4   	2.014340e+00	( 2 3 5 4  )
+G_LOOP:  1  0  6   	1.300613e+00	( 0 0 1 7 7 6  )
+G_LOOP:  1  1  6   	1.300842e+00	( 0 0 2 7 7 5  )
+G_LOOP:  1  2  6   	1.298253e+00	( 0 0 3 7 7 4  )
+G_LOOP:  1  3  6   	1.302963e+00	( 1 1 0 6 6 7  )
+G_LOOP:  1  4  6   	1.302157e+00	( 1 1 2 6 6 5  )
+G_LOOP:  1  5  6   	1.297503e+00	( 1 1 3 6 6 4  )
+G_LOOP:  1  6  6   	1.301427e+00	( 2 2 0 5 5 7  )
+G_LOOP:  1  7  6   	1.304927e+00	( 2 2 1 5 5 6  )
+G_LOOP:  1  8  6   	1.304792e+00	( 2 2 3 5 5 4  )
+G_LOOP:  1  9  6   	1.298713e+00	( 3 3 0 4 4 7  )
+G_LOOP:  1  10  6   	1.299108e+00	( 3 3 1 4 4 6  )
+G_LOOP:  1  11  6   	1.299223e+00	( 3 3 2 4 4 5  )
+G_LOOP:  2  0  6   	1.348445e+00	( 0 1 2 7 6 5  )
+G_LOOP:  2  1  6   	1.343089e+00	( 0 1 5 7 6 2  )
+G_LOOP:  2  2  6   	1.346329e+00	( 0 6 2 7 1 5  )
+G_LOOP:  2  3  6   	1.345030e+00	( 0 6 5 7 1 2  )
+G_LOOP:  2  4  6   	1.343380e+00	( 0 1 3 7 6 4  )
+G_LOOP:  2  5  6   	1.344257e+00	( 0 1 4 7 6 3  )
+G_LOOP:  2  6  6   	1.343157e+00	( 0 6 3 7 1 4  )
+G_LOOP:  2  7  6   	1.342065e+00	( 0 6 4 7 1 3  )
+G_LOOP:  2  8  6   	1.346172e+00	( 0 2 3 7 5 4  )
+G_LOOP:  2  9  6   	1.342668e+00	( 0 2 4 7 5 3  )
+G_LOOP:  2  10  6   	1.348706e+00	( 0 5 3 7 2 4  )
+G_LOOP:  2  11  6   	1.343122e+00	( 0 5 4 7 2 3  )
+G_LOOP:  2  12  6   	1.345732e+00	( 1 2 3 6 5 4  )
+G_LOOP:  2  13  6   	1.341834e+00	( 1 2 4 6 5 3  )
+G_LOOP:  2  14  6   	1.347041e+00	( 1 5 3 6 2 4  )
+G_LOOP:  2  15  6   	1.345153e+00	( 1 5 4 6 2 3  )
+GACTION: 4.065737e+00
+CONGRAD5: time = 6.829977e-03 (fn F) masses = 1 iters = 4 mflops = 2.402510e+03
+ OK converged final_rsq= 0.014 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 8.840799e-03 (fn F) masses = 1 iters = 6 mflops = 2.784096e+03
+ OK converged final_rsq= 0.013 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 6
+PBP: mass 1.250000e-01     8.497467e-02  1.688522e-01  -5.301324e-04  -5.047567e-04 ( 1 of 1 )
+FACTION: mass = 1.250000e-01,  1.446208e+00 ( 1 of 1 )
+CONGRAD5: time = 6.767035e-03 (fn F) masses = 1 iters = 4 mflops = 2.424857e+03
+ OK converged final_rsq= 0.014 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+CONGRAD5: time = 8.820057e-03 (fn F) masses = 1 iters = 6 mflops = 2.790643e+03
+ OK converged final_rsq= 0.013 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 6
+PBP: mass 1.250000e-01     8.481228e-02  1.712648e-01  2.146663e-03  2.408056e-03 ( 1 of 1 )
+FACTION: mass = 1.250000e-01,  1.442460e+00 ( 1 of 1 )
+CONGRAD5: time = 8.002043e-03 (fn F) masses = 1 iters = 5 mflops = 2.563265e+03
+ OK converged final_rsq= 0.0075 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 6.781101e-03 (fn F) masses = 1 iters = 4 mflops = 2.419826e+03
+ OK converged final_rsq= 0.016 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 4
+GFTIME:   time = 1.404638e-01 (Symanzik1) mflops = 3.764541e+03
+FFTIME:  time = 5.055671e-01 (asqtad3) terms = 2 mflops = 2.966557e+03
+CONGRAD5: time = 7.935047e-03 (fn F) masses = 1 iters = 5 mflops = 2.584907e+03
+ OK converged final_rsq= 0.0092 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.741928e-03 (fn F) masses = 1 iters = 5 mflops = 2.649387e+03
+ OK converged final_rsq= 0.0087 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.410849e-01 (Symanzik1) mflops = 3.747969e+03
+FFTIME:  time = 5.064821e-01 (asqtad3) terms = 2 mflops = 2.961197e+03
+CONGRAD5: time = 8.038998e-03 (fn F) masses = 1 iters = 5 mflops = 2.551482e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.707119e-03 (fn F) masses = 1 iters = 5 mflops = 2.661352e+03
+ OK converged final_rsq= 0.01 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.404560e-01 (Symanzik1) mflops = 3.764752e+03
+FFTIME:  time = 5.064449e-01 (asqtad3) terms = 2 mflops = 2.961415e+03
+CONGRAD5: time = 7.936001e-03 (fn F) masses = 1 iters = 5 mflops = 2.584597e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.818937e-03 (fn F) masses = 1 iters = 5 mflops = 2.623293e+03
+ OK converged final_rsq= 0.01 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.405451e-01 (Symanzik1) mflops = 3.762363e+03
+FFTIME:  time = 5.061121e-01 (asqtad3) terms = 2 mflops = 2.963362e+03
+CONGRAD5: time = 7.903814e-03 (fn F) masses = 1 iters = 5 mflops = 2.595122e+03
+ OK converged final_rsq= 0.0099 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.800102e-03 (fn F) masses = 1 iters = 5 mflops = 2.629627e+03
+ OK converged final_rsq= 0.0095 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.397250e-01 (Symanzik1) mflops = 3.784448e+03
+FFTIME:  time = 5.072629e-01 (asqtad3) terms = 2 mflops = 2.956639e+03
+PLAQ:	1.791483	1.792157
+P_LOOP:	-5.625045e-03	-1.410870e-02
+G_LOOP:  0  0  4   	1.791594e+00	( 0 1 7 6  )
+G_LOOP:  0  1  4   	1.792323e+00	( 0 2 7 5  )
+G_LOOP:  0  2  4   	1.792407e+00	( 0 3 7 4  )
+G_LOOP:  0  3  4   	1.790532e+00	( 1 2 6 5  )
+G_LOOP:  0  4  4   	1.793364e+00	( 1 3 6 4  )
+G_LOOP:  0  5  4   	1.790701e+00	( 2 3 5 4  )
+G_LOOP:  1  0  6   	1.025456e+00	( 0 0 1 7 7 6  )
+G_LOOP:  1  1  6   	1.026012e+00	( 0 0 2 7 7 5  )
+G_LOOP:  1  2  6   	1.024732e+00	( 0 0 3 7 7 4  )
+G_LOOP:  1  3  6   	1.025410e+00	( 1 1 0 6 6 7  )
+G_LOOP:  1  4  6   	1.024953e+00	( 1 1 2 6 6 5  )
+G_LOOP:  1  5  6   	1.022938e+00	( 1 1 3 6 6 4  )
+G_LOOP:  1  6  6   	1.024038e+00	( 2 2 0 5 5 7  )
+G_LOOP:  1  7  6   	1.024894e+00	( 2 2 1 5 5 6  )
+G_LOOP:  1  8  6   	1.022412e+00	( 2 2 3 5 5 4  )
+G_LOOP:  1  9  6   	1.027185e+00	( 3 3 0 4 4 7  )
+G_LOOP:  1  10  6   	1.025144e+00	( 3 3 1 4 4 6  )
+G_LOOP:  1  11  6   	1.025040e+00	( 3 3 2 4 4 5  )
+G_LOOP:  2  0  6   	1.061102e+00	( 0 1 2 7 6 5  )
+G_LOOP:  2  1  6   	1.057245e+00	( 0 1 5 7 6 2  )
+G_LOOP:  2  2  6   	1.056138e+00	( 0 6 2 7 1 5  )
+G_LOOP:  2  3  6   	1.056679e+00	( 0 6 5 7 1 2  )
+G_LOOP:  2  4  6   	1.053658e+00	( 0 1 3 7 6 4  )
+G_LOOP:  2  5  6   	1.057752e+00	( 0 1 4 7 6 3  )
+G_LOOP:  2  6  6   	1.058101e+00	( 0 6 3 7 1 4  )
+G_LOOP:  2  7  6   	1.058884e+00	( 0 6 4 7 1 3  )
+G_LOOP:  2  8  6   	1.056078e+00	( 0 2 3 7 5 4  )
+G_LOOP:  2  9  6   	1.059393e+00	( 0 2 4 7 5 3  )
+G_LOOP:  2  10  6   	1.057076e+00	( 0 5 3 7 2 4  )
+G_LOOP:  2  11  6   	1.062819e+00	( 0 5 4 7 2 3  )
+G_LOOP:  2  12  6   	1.057843e+00	( 1 2 3 6 5 4  )
+G_LOOP:  2  13  6   	1.058616e+00	( 1 2 4 6 5 3  )
+G_LOOP:  2  14  6   	1.053119e+00	( 1 5 3 6 2 4  )
+G_LOOP:  2  15  6   	1.057944e+00	( 1 5 4 6 2 3  )
+GACTION: 5.088764e+00
+CONGRAD5: time = 7.852793e-03 (fn F) masses = 1 iters = 5 mflops = 2.611983e+03
+ OK converged final_rsq= 0.0086 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 8.762121e-03 (fn F) masses = 1 iters = 6 mflops = 2.809095e+03
+ OK converged final_rsq= 0.015 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 6
+PBP: mass 1.250000e-01     1.111279e-01  3.023810e-01  2.452463e-03  2.404104e-03 ( 1 of 1 )
+FACTION: mass = 1.250000e-01,  1.456062e+00 ( 1 of 1 )
+CONGRAD5: time = 7.705212e-03 (fn F) masses = 1 iters = 5 mflops = 2.662011e+03
+ OK converged final_rsq= 0.0085 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 8.616924e-03 (fn F) masses = 1 iters = 6 mflops = 2.856429e+03
+ OK converged final_rsq= 0.015 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 6
+PBP: mass 1.250000e-01     1.104930e-01  3.003512e-01  6.282960e-05  9.094552e-04 ( 1 of 1 )
+FACTION: mass = 1.250000e-01,  1.455075e+00 ( 1 of 1 )
+CONGRAD5: time = 7.991076e-03 (fn F) masses = 1 iters = 5 mflops = 2.566783e+03
+ OK converged final_rsq= 0.01 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.809877e-03 (fn F) masses = 1 iters = 5 mflops = 2.626336e+03
+ OK converged final_rsq= 0.0095 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.403549e-01 (Symanzik1) mflops = 3.767463e+03
+FFTIME:  time = 5.069399e-01 (asqtad3) terms = 2 mflops = 2.958523e+03
+CONGRAD5: time = 7.972002e-03 (fn F) masses = 1 iters = 5 mflops = 2.572925e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.791996e-03 (fn F) masses = 1 iters = 5 mflops = 2.632363e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.407840e-01 (Symanzik1) mflops = 3.755979e+03
+FFTIME:  time = 5.068760e-01 (asqtad3) terms = 2 mflops = 2.958896e+03
+CONGRAD5: time = 7.997036e-03 (fn F) masses = 1 iters = 5 mflops = 2.564870e+03
+ OK converged final_rsq= 0.012 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.766008e-03 (fn F) masses = 1 iters = 5 mflops = 2.641172e+03
+ OK converged final_rsq= 0.012 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.412671e-01 (Symanzik1) mflops = 3.743136e+03
+FFTIME:  time = 5.071828e-01 (asqtad3) terms = 2 mflops = 2.957106e+03
+CONGRAD5: time = 7.961988e-03 (fn F) masses = 1 iters = 5 mflops = 2.576160e+03
+ OK converged final_rsq= 0.012 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.705927e-03 (fn F) masses = 1 iters = 5 mflops = 2.661764e+03
+ OK converged final_rsq= 0.012 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.401110e-01 (Symanzik1) mflops = 3.774022e+03
+FFTIME:  time = 5.056710e-01 (asqtad3) terms = 2 mflops = 2.965947e+03
+CONGRAD5: time = 7.978916e-03 (fn F) masses = 1 iters = 5 mflops = 2.570695e+03
+ OK converged final_rsq= 0.012 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 7.836103e-03 (fn F) masses = 1 iters = 5 mflops = 2.617546e+03
+ OK converged final_rsq= 0.011 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+GFTIME:   time = 1.404431e-01 (Symanzik1) mflops = 3.765097e+03
+FFTIME:  time = 5.051200e-01 (asqtad3) terms = 2 mflops = 2.969182e+03
+PLAQ:	1.645902	1.647369
+P_LOOP:	-1.143113e-02	-2.267756e-03
+G_LOOP:  0  0  4   	1.645709e+00	( 0 1 7 6  )
+G_LOOP:  0  1  4   	1.644737e+00	( 0 2 7 5  )
+G_LOOP:  0  2  4   	1.647218e+00	( 0 3 7 4  )
+G_LOOP:  0  3  4   	1.647258e+00	( 1 2 6 5  )
+G_LOOP:  0  4  4   	1.649003e+00	( 1 3 6 4  )
+G_LOOP:  0  5  4   	1.645887e+00	( 2 3 5 4  )
+G_LOOP:  1  0  6   	8.580218e-01	( 0 0 1 7 7 6  )
+G_LOOP:  1  1  6   	8.541604e-01	( 0 0 2 7 7 5  )
+G_LOOP:  1  2  6   	8.595779e-01	( 0 0 3 7 7 4  )
+G_LOOP:  1  3  6   	8.582930e-01	( 1 1 0 6 6 7  )
+G_LOOP:  1  4  6   	8.580090e-01	( 1 1 2 6 6 5  )
+G_LOOP:  1  5  6   	8.579565e-01	( 1 1 3 6 6 4  )
+G_LOOP:  1  6  6   	8.503308e-01	( 2 2 0 5 5 7  )
+G_LOOP:  1  7  6   	8.559146e-01	( 2 2 1 5 5 6  )
+G_LOOP:  1  8  6   	8.569176e-01	( 2 2 3 5 5 4  )
+G_LOOP:  1  9  6   	8.593230e-01	( 3 3 0 4 4 7  )
+G_LOOP:  1  10  6   	8.598535e-01	( 3 3 1 4 4 6  )
+G_LOOP:  1  11  6   	8.616721e-01	( 3 3 2 4 4 5  )
+G_LOOP:  2  0  6   	8.789153e-01	( 0 1 2 7 6 5  )
+G_LOOP:  2  1  6   	8.791288e-01	( 0 1 5 7 6 2  )
+G_LOOP:  2  2  6   	8.810073e-01	( 0 6 2 7 1 5  )
+G_LOOP:  2  3  6   	8.768704e-01	( 0 6 5 7 1 2  )
+G_LOOP:  2  4  6   	8.798489e-01	( 0 1 3 7 6 4  )
+G_LOOP:  2  5  6   	8.801400e-01	( 0 1 4 7 6 3  )
+G_LOOP:  2  6  6   	8.826417e-01	( 0 6 3 7 1 4  )
+G_LOOP:  2  7  6   	8.788818e-01	( 0 6 4 7 1 3  )
+G_LOOP:  2  8  6   	8.816597e-01	( 0 2 3 7 5 4  )
+G_LOOP:  2  9  6   	8.763485e-01	( 0 2 4 7 5 3  )
+G_LOOP:  2  10  6   	8.789559e-01	( 0 5 3 7 2 4  )
+G_LOOP:  2  11  6   	8.814330e-01	( 0 5 4 7 2 3  )
+G_LOOP:  2  12  6   	8.771350e-01	( 1 2 3 6 5 4  )
+G_LOOP:  2  13  6   	8.797539e-01	( 1 2 4 6 5 3  )
+G_LOOP:  2  14  6   	8.777674e-01	( 1 5 3 6 2 4  )
+G_LOOP:  2  15  6   	8.827374e-01	( 1 5 4 6 2 3  )
+GACTION: 5.774606e+00
+CONGRAD5: time = 7.869005e-03 (fn F) masses = 1 iters = 5 mflops = 2.606601e+03
+ OK converged final_rsq= 0.01 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 9.799957e-03 (fn F) masses = 1 iters = 7 mflops = 2.930207e+03
+ OK converged final_rsq= 0.008 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 7
+PBP: mass 1.250000e-01     1.265012e-01  3.213337e-01  -2.075054e-03  -2.155931e-03 ( 1 of 1 )
+FACTION: mass = 1.250000e-01,  1.436267e+00 ( 1 of 1 )
+CONGRAD5: time = 7.759809e-03 (fn F) masses = 1 iters = 5 mflops = 2.643281e+03
+ OK converged final_rsq= 0.01 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 5
+CONGRAD5: time = 9.810925e-03 (fn F) masses = 1 iters = 7 mflops = 2.926931e+03
+ OK converged final_rsq= 0.0081 (cf 0.016) rel = 1 (cf 0) restarts = 1 iters= 7
+PBP: mass 1.250000e-01     1.253157e-01  3.200521e-01  5.918009e-04  2.751183e-04 ( 1 of 1 )
+FACTION: mass = 1.250000e-01,  1.432563e+00 ( 1 of 1 )
+RUNNING COMPLETED
+average cg iters for step= 1.100000e+01
+Time = 1.963310e+01 seconds
+total_iters = 550
+Checksums 41e6b2b3 a5e7c44
+Saved gauge configuration in parallel to binary file lat_p64_size128_1
+Time stamp Wed May 18 22:12:34 2022
+Wrote info file lat_p64_size128_1.info
+Time to save = 4.303789e-02
+CHECK PLAQ: 1.645902e+00 1.647369e+00
+CHECK NERSC LINKTR: 1.706465e-01 CKSUM: 85c71d91
+
+
+warms 0
+trajecs 4
+traj_between_meas 1
+beta 5.6
+mass1 0.01
+mass2 0.01
+u0 0.8441
+microcanonical_time_step 0.02
+steps_per_trajectory 15
+max_cg_iterations 300
+max_cg_restarts 5
+error_per_site 1e-05
+error_for_propagator 1e-05
+npbp_reps 1
+prec_pbp 1
+reload_parallel lat_p64_size128_1
+save_parallel lat_p64_size128_2
+Restored binary gauge configuration in parallel from file lat_p64_size128_1
+Time stamp Wed May 18 22:12:34 2022
+Checksums 41e6b2b3 a5e7c44 OK
+Time to reload gauge configuration = 1.947713e-02
+CHECK PLAQ: 1.645902e+00 1.647369e+00
+CHECK NERSC LINKTR: 1.706465e-01 CKSUM: 85c71d91
+Unitarity checked.  Max deviation 2.98e-07
+Time to check unitarity = 6.260872e-04
+"O(a^2): couplings(pi)=0, Naik term, No O(a^2) errors, tadpole weights"
+path coefficients: npath  path_coeff  multiplicity
+                    0      6.250000e-01     8
+                    1      -5.847914e-02     8
+                    2      -8.771871e-02     48
+                    3      3.077829e-02     192
+                    4      -7.199551e-03     384
+                    5      -1.231132e-01     48
+Symanzik 1x1 + 1x2 + 1x1x1 action
+gauge_action: total_dyn_flavors = 3
+loop coefficients: nloop rep loop_coeff  multiplicity
+                    0 0      1.000000e+00     6
+                    1 0      -7.762509e-02     12
+                    2 0      -1.031171e-02     16
+WARMUPS COMPLETED
+CONGRAD5: time = 6.186590e-01 (fn F) masses = 1 iters = 600 mflops = 3.978546e+03
+ OK converged final_rsq= 9.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+CONGRAD5: time = 6.205831e-01 (fn F) masses = 1 iters = 602 mflops = 3.979431e+03
+ OK converged final_rsq= 7.3e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.395612e-01 (Symanzik1) mflops = 3.788889e+03
+FFTIME:  time = 5.073490e-01 (asqtad3) terms = 2 mflops = 2.956137e+03
+CONGRAD5: time = 6.056330e-01 (fn F) masses = 1 iters = 591 mflops = 4.003155e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 591
+CONGRAD5: time = 6.071188e-01 (fn F) masses = 1 iters = 593 mflops = 4.006872e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 593
+GFTIME:   time = 1.396420e-01 (Symanzik1) mflops = 3.786696e+03
+FFTIME:  time = 5.045280e-01 (asqtad3) terms = 2 mflops = 2.972666e+03
+CONGRAD5: time = 6.128862e-01 (fn F) masses = 1 iters = 597 mflops = 3.995940e+03
+ OK converged final_rsq= 4.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 597
+CONGRAD5: time = 5.779989e-01 (fn F) masses = 1 iters = 563 mflops = 3.995819e+03
+ OK converged final_rsq= 4.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 563
+GFTIME:   time = 1.400440e-01 (Symanzik1) mflops = 3.775827e+03
+FFTIME:  time = 5.057390e-01 (asqtad3) terms = 2 mflops = 2.965548e+03
+CONGRAD5: time = 6.039960e-01 (fn F) masses = 1 iters = 590 mflops = 4.007213e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 590
+CONGRAD5: time = 5.914209e-01 (fn F) masses = 1 iters = 578 mflops = 4.009181e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 578
+GFTIME:   time = 1.397190e-01 (Symanzik1) mflops = 3.784609e+03
+FFTIME:  time = 5.054438e-01 (asqtad3) terms = 2 mflops = 2.967280e+03
+CONGRAD5: time = 6.133239e-01 (fn F) masses = 1 iters = 598 mflops = 3.999777e+03
+ OK converged final_rsq= 9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 598
+CONGRAD5: time = 5.768330e-01 (fn F) masses = 1 iters = 562 mflops = 3.996784e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 562
+GFTIME:   time = 1.394811e-01 (Symanzik1) mflops = 3.791065e+03
+FFTIME:  time = 5.073080e-01 (asqtad3) terms = 2 mflops = 2.956376e+03
+CONGRAD5: time = 6.151891e-01 (fn F) masses = 1 iters = 600 mflops = 4.000987e+03
+ OK converged final_rsq= 9.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+CONGRAD5: time = 6.068170e-01 (fn F) masses = 1 iters = 594 mflops = 4.015625e+03
+ OK converged final_rsq= 9.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 594
+GFTIME:   time = 1.394551e-01 (Symanzik1) mflops = 3.791772e+03
+FFTIME:  time = 5.051582e-01 (asqtad3) terms = 2 mflops = 2.968958e+03
+CONGRAD5: time = 6.051540e-01 (fn F) masses = 1 iters = 590 mflops = 3.999544e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 590
+CONGRAD5: time = 6.037219e-01 (fn F) masses = 1 iters = 590 mflops = 4.009032e+03
+ OK converged final_rsq= 9.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 590
+GFTIME:   time = 1.392632e-01 (Symanzik1) mflops = 3.796997e+03
+FFTIME:  time = 5.059972e-01 (asqtad3) terms = 2 mflops = 2.964035e+03
+CONGRAD5: time = 6.175220e-01 (fn F) masses = 1 iters = 602 mflops = 3.999158e+03
+ OK converged final_rsq= 4.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.049111e-01 (fn F) masses = 1 iters = 590 mflops = 4.001151e+03
+ OK converged final_rsq= 5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 590
+GFTIME:   time = 1.399291e-01 (Symanzik1) mflops = 3.778928e+03
+FFTIME:  time = 5.051949e-01 (asqtad3) terms = 2 mflops = 2.968742e+03
+CONGRAD5: time = 6.189871e-01 (fn F) masses = 1 iters = 602 mflops = 3.989692e+03
+ OK converged final_rsq= 4.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.046269e-01 (fn F) masses = 1 iters = 590 mflops = 4.003031e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 590
+GFTIME:   time = 1.393242e-01 (Symanzik1) mflops = 3.795334e+03
+FFTIME:  time = 5.055640e-01 (asqtad3) terms = 2 mflops = 2.966575e+03
+CONGRAD5: time = 6.179919e-01 (fn F) masses = 1 iters = 602 mflops = 3.996117e+03
+ OK converged final_rsq= 4.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.153500e-01 (fn F) masses = 1 iters = 600 mflops = 3.999940e+03
+ OK converged final_rsq= 7.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.397781e-01 (Symanzik1) mflops = 3.783008e+03
+FFTIME:  time = 5.055590e-01 (asqtad3) terms = 2 mflops = 2.966604e+03
+CONGRAD5: time = 6.153910e-01 (fn F) masses = 1 iters = 600 mflops = 3.999674e+03
+ OK converged final_rsq= 8.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+CONGRAD5: time = 6.136470e-01 (fn F) masses = 1 iters = 598 mflops = 3.997671e+03
+ OK converged final_rsq= 9.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 598
+GFTIME:   time = 1.397190e-01 (Symanzik1) mflops = 3.784609e+03
+FFTIME:  time = 5.063052e-01 (asqtad3) terms = 2 mflops = 2.962232e+03
+CONGRAD5: time = 6.146741e-01 (fn F) masses = 1 iters = 598 mflops = 3.990991e+03
+ OK converged final_rsq= 9.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 598
+CONGRAD5: time = 6.149750e-01 (fn F) masses = 1 iters = 600 mflops = 4.002379e+03
+ OK converged final_rsq= 8.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.402860e-01 (Symanzik1) mflops = 3.769314e+03
+FFTIME:  time = 5.054920e-01 (asqtad3) terms = 2 mflops = 2.966997e+03
+CONGRAD5: time = 6.197221e-01 (fn F) masses = 1 iters = 602 mflops = 3.984960e+03
+ OK converged final_rsq= 5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.097171e-01 (fn F) masses = 1 iters = 594 mflops = 3.996525e+03
+ OK converged final_rsq= 4.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 594
+GFTIME:   time = 1.396751e-01 (Symanzik1) mflops = 3.785798e+03
+FFTIME:  time = 5.067401e-01 (asqtad3) terms = 2 mflops = 2.959690e+03
+CONGRAD5: time = 6.193008e-01 (fn F) masses = 1 iters = 602 mflops = 3.987671e+03
+ OK converged final_rsq= 5.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.151440e-01 (fn F) masses = 1 iters = 600 mflops = 4.001280e+03
+ OK converged final_rsq= 4.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 600
+GFTIME:   time = 1.392112e-01 (Symanzik1) mflops = 3.798415e+03
+FFTIME:  time = 5.062392e-01 (asqtad3) terms = 2 mflops = 2.962618e+03
+CONGRAD5: time = 6.143811e-01 (fn F) masses = 1 iters = 599 mflops = 3.999571e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 599
+CONGRAD5: time = 6.146688e-01 (fn F) masses = 1 iters = 600 mflops = 4.004373e+03
+ OK converged final_rsq= 9.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.400158e-01 (Symanzik1) mflops = 3.776586e+03
+FFTIME:  time = 5.070529e-01 (asqtad3) terms = 2 mflops = 2.957864e+03
+PLAQ:	1.539870	1.540983
+P_LOOP:	2.341213e-03	1.164436e-02
+G_LOOP:  0  0  4   	1.542867e+00	( 0 1 7 6  )
+G_LOOP:  0  1  4   	1.537272e+00	( 0 2 7 5  )
+G_LOOP:  0  2  4   	1.541847e+00	( 0 3 7 4  )
+G_LOOP:  0  3  4   	1.539470e+00	( 1 2 6 5  )
+G_LOOP:  0  4  4   	1.541731e+00	( 1 3 6 4  )
+G_LOOP:  0  5  4   	1.539371e+00	( 2 3 5 4  )
+G_LOOP:  1  0  6   	7.833462e-01	( 0 0 1 7 7 6  )
+G_LOOP:  1  1  6   	7.762624e-01	( 0 0 2 7 7 5  )
+G_LOOP:  1  2  6   	7.838242e-01	( 0 0 3 7 7 4  )
+G_LOOP:  1  3  6   	7.835679e-01	( 1 1 0 6 6 7  )
+G_LOOP:  1  4  6   	7.791536e-01	( 1 1 2 6 6 5  )
+G_LOOP:  1  5  6   	7.769763e-01	( 1 1 3 6 6 4  )
+G_LOOP:  1  6  6   	7.748242e-01	( 2 2 0 5 5 7  )
+G_LOOP:  1  7  6   	7.780153e-01	( 2 2 1 5 5 6  )
+G_LOOP:  1  8  6   	7.802333e-01	( 2 2 3 5 5 4  )
+G_LOOP:  1  9  6   	7.800279e-01	( 3 3 0 4 4 7  )
+G_LOOP:  1  10  6   	7.797631e-01	( 3 3 1 4 4 6  )
+G_LOOP:  1  11  6   	7.809500e-01	( 3 3 2 4 4 5  )
+G_LOOP:  2  0  6   	7.992281e-01	( 0 1 2 7 6 5  )
+G_LOOP:  2  1  6   	7.976546e-01	( 0 1 5 7 6 2  )
+G_LOOP:  2  2  6   	8.026440e-01	( 0 6 2 7 1 5  )
+G_LOOP:  2  3  6   	7.979111e-01	( 0 6 5 7 1 2  )
+G_LOOP:  2  4  6   	8.020918e-01	( 0 1 3 7 6 4  )
+G_LOOP:  2  5  6   	8.041203e-01	( 0 1 4 7 6 3  )
+G_LOOP:  2  6  6   	8.028141e-01	( 0 6 3 7 1 4  )
+G_LOOP:  2  7  6   	8.037676e-01	( 0 6 4 7 1 3  )
+G_LOOP:  2  8  6   	7.983431e-01	( 0 2 3 7 5 4  )
+G_LOOP:  2  9  6   	7.983456e-01	( 0 2 4 7 5 3  )
+G_LOOP:  2  10  6   	7.998412e-01	( 0 5 3 7 2 4  )
+G_LOOP:  2  11  6   	8.027047e-01	( 0 5 4 7 2 3  )
+G_LOOP:  2  12  6   	7.993306e-01	( 1 2 3 6 5 4  )
+G_LOOP:  2  13  6   	7.995266e-01	( 1 2 4 6 5 3  )
+G_LOOP:  2  14  6   	7.962881e-01	( 1 5 3 6 2 4  )
+G_LOOP:  2  15  6   	8.045871e-01	( 1 5 4 6 2 3  )
+GACTION: 6.326396e+00
+CONGRAD5: time = 6.143339e-01 (fn F) masses = 1 iters = 600 mflops = 4.006556e+03
+ OK converged final_rsq= 8.3e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+CONGRAD5: time = 1.001999e-01 (fn F) masses = 1 iters = 96 mflops = 3.930323e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 1 iters= 96
+PBP: mass 1.000000e-02     3.354812e-02  4.058975e-02  -2.196691e-04  -2.219500e-04 ( 1 of 1 )
+FACTION: mass = 1.000000e-02,  1.496073e+00 ( 1 of 1 )
+CONGRAD5: time = 6.131561e-01 (fn F) masses = 1 iters = 599 mflops = 4.007562e+03
+ OK converged final_rsq= 8.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 599
+CONGRAD5: time = 9.265518e-02 (fn F) masses = 1 iters = 88 mflops = 3.896166e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 1 iters= 88
+PBP: mass 1.000000e-02     3.817999e-02  3.451439e-02  3.792468e-03  3.793978e-03 ( 1 of 1 )
+FACTION: mass = 1.000000e-02,  1.499155e+00 ( 1 of 1 )
+CONGRAD5: time = 6.133900e-01 (fn F) masses = 1 iters = 599 mflops = 4.006034e+03
+ OK converged final_rsq= 9.5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 599
+CONGRAD5: time = 6.158500e-01 (fn F) masses = 1 iters = 601 mflops = 4.003354e+03
+ OK converged final_rsq= 4.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 601
+GFTIME:   time = 1.402590e-01 (Symanzik1) mflops = 3.770038e+03
+FFTIME:  time = 5.073330e-01 (asqtad3) terms = 2 mflops = 2.956231e+03
+CONGRAD5: time = 6.184201e-01 (fn F) masses = 1 iters = 602 mflops = 3.993350e+03
+ OK converged final_rsq= 6.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.180499e-01 (fn F) masses = 1 iters = 602 mflops = 3.995742e+03
+ OK converged final_rsq= 3.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.400051e-01 (Symanzik1) mflops = 3.776875e+03
+FFTIME:  time = 5.065520e-01 (asqtad3) terms = 2 mflops = 2.960789e+03
+CONGRAD5: time = 6.119280e-01 (fn F) masses = 1 iters = 597 mflops = 4.002197e+03
+ OK converged final_rsq= 9.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 597
+CONGRAD5: time = 6.131599e-01 (fn F) masses = 1 iters = 599 mflops = 4.007537e+03
+ OK converged final_rsq= 9.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 599
+GFTIME:   time = 1.393850e-01 (Symanzik1) mflops = 3.793679e+03
+FFTIME:  time = 5.058179e-01 (asqtad3) terms = 2 mflops = 2.965086e+03
+CONGRAD5: time = 6.192820e-01 (fn F) masses = 1 iters = 602 mflops = 3.987792e+03
+ OK converged final_rsq= 6.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.096048e-01 (fn F) masses = 1 iters = 594 mflops = 3.997261e+03
+ OK converged final_rsq= 4.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 594
+GFTIME:   time = 1.396420e-01 (Symanzik1) mflops = 3.786696e+03
+FFTIME:  time = 5.063131e-01 (asqtad3) terms = 2 mflops = 2.962186e+03
+CONGRAD5: time = 6.190450e-01 (fn F) masses = 1 iters = 602 mflops = 3.989318e+03
+ OK converged final_rsq= 4.3e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.178770e-01 (fn F) masses = 1 iters = 602 mflops = 3.996860e+03
+ OK converged final_rsq= 4.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.402471e-01 (Symanzik1) mflops = 3.770358e+03
+FFTIME:  time = 5.102489e-01 (asqtad3) terms = 2 mflops = 2.939337e+03
+CONGRAD5: time = 6.184120e-01 (fn F) masses = 1 iters = 602 mflops = 3.993402e+03
+ OK converged final_rsq= 4.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.144590e-01 (fn F) masses = 1 iters = 599 mflops = 3.999064e+03
+ OK converged final_rsq= 9.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 599
+GFTIME:   time = 1.396909e-01 (Symanzik1) mflops = 3.785371e+03
+FFTIME:  time = 5.140159e-01 (asqtad3) terms = 2 mflops = 2.917796e+03
+CONGRAD5: time = 6.131201e-01 (fn F) masses = 1 iters = 598 mflops = 4.001106e+03
+ OK converged final_rsq= 9.1e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 598
+CONGRAD5: time = 6.155672e-01 (fn F) masses = 1 iters = 601 mflops = 4.005193e+03
+ OK converged final_rsq= 4.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 601
+GFTIME:   time = 1.392081e-01 (Symanzik1) mflops = 3.798500e+03
+FFTIME:  time = 5.062721e-01 (asqtad3) terms = 2 mflops = 2.962426e+03
+CONGRAD5: time = 6.111081e-01 (fn F) masses = 1 iters = 597 mflops = 4.007567e+03
+ OK converged final_rsq= 9.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 597
+CONGRAD5: time = 6.143270e-01 (fn F) masses = 1 iters = 600 mflops = 4.006601e+03
+ OK converged final_rsq= 4.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 600
+GFTIME:   time = 1.402829e-01 (Symanzik1) mflops = 3.769397e+03
+FFTIME:  time = 5.062459e-01 (asqtad3) terms = 2 mflops = 2.962579e+03
+CONGRAD5: time = 6.171789e-01 (fn F) masses = 1 iters = 602 mflops = 4.001381e+03
+ OK converged final_rsq= 6.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.039579e-01 (fn F) masses = 1 iters = 590 mflops = 4.007466e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 590
+GFTIME:   time = 1.395628e-01 (Symanzik1) mflops = 3.788844e+03
+FFTIME:  time = 5.075119e-01 (asqtad3) terms = 2 mflops = 2.955189e+03
+CONGRAD5: time = 6.191292e-01 (fn F) masses = 1 iters = 602 mflops = 3.988776e+03
+ OK converged final_rsq= 7.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.148140e-01 (fn F) masses = 1 iters = 600 mflops = 4.003427e+03
+ OK converged final_rsq= 9.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.394961e-01 (Symanzik1) mflops = 3.790657e+03
+FFTIME:  time = 5.087690e-01 (asqtad3) terms = 2 mflops = 2.947887e+03
+CONGRAD5: time = 6.156549e-01 (fn F) masses = 1 iters = 600 mflops = 3.997959e+03
+ OK converged final_rsq= 8.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+CONGRAD5: time = 6.181431e-01 (fn F) masses = 1 iters = 602 mflops = 3.995139e+03
+ OK converged final_rsq= 4.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.395261e-01 (Symanzik1) mflops = 3.789841e+03
+FFTIME:  time = 5.064459e-01 (asqtad3) terms = 2 mflops = 2.961409e+03
+CONGRAD5: time = 6.179581e-01 (fn F) masses = 1 iters = 602 mflops = 3.996335e+03
+ OK converged final_rsq= 4.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.129558e-01 (fn F) masses = 1 iters = 598 mflops = 4.002179e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 598
+GFTIME:   time = 1.397648e-01 (Symanzik1) mflops = 3.783369e+03
+FFTIME:  time = 5.060790e-01 (asqtad3) terms = 2 mflops = 2.963556e+03
+CONGRAD5: time = 6.168129e-01 (fn F) masses = 1 iters = 602 mflops = 4.003755e+03
+ OK converged final_rsq= 7.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.139710e-01 (fn F) masses = 1 iters = 600 mflops = 4.008924e+03
+ OK converged final_rsq= 9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.399758e-01 (Symanzik1) mflops = 3.777666e+03
+FFTIME:  time = 5.055790e-01 (asqtad3) terms = 2 mflops = 2.966487e+03
+CONGRAD5: time = 6.192420e-01 (fn F) masses = 1 iters = 602 mflops = 3.988050e+03
+ OK converged final_rsq= 5.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.168091e-01 (fn F) masses = 1 iters = 602 mflops = 4.003779e+03
+ OK converged final_rsq= 3.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.401882e-01 (Symanzik1) mflops = 3.771942e+03
+FFTIME:  time = 5.073380e-01 (asqtad3) terms = 2 mflops = 2.956201e+03
+CONGRAD5: time = 6.193578e-01 (fn F) masses = 1 iters = 602 mflops = 3.987304e+03
+ OK converged final_rsq= 6.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.161730e-01 (fn F) masses = 1 iters = 600 mflops = 3.994597e+03
+ OK converged final_rsq= 8.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.395562e-01 (Symanzik1) mflops = 3.789025e+03
+FFTIME:  time = 5.067809e-01 (asqtad3) terms = 2 mflops = 2.959452e+03
+PLAQ:	1.497886	1.500338
+P_LOOP:	-1.391577e-02	-1.178132e-02
+G_LOOP:  0  0  4   	1.500068e+00	( 0 1 7 6  )
+G_LOOP:  0  1  4   	1.494129e+00	( 0 2 7 5  )
+G_LOOP:  0  2  4   	1.501872e+00	( 0 3 7 4  )
+G_LOOP:  0  3  4   	1.499460e+00	( 1 2 6 5  )
+G_LOOP:  0  4  4   	1.499716e+00	( 1 3 6 4  )
+G_LOOP:  0  5  4   	1.499427e+00	( 2 3 5 4  )
+G_LOOP:  1  0  6   	7.443911e-01	( 0 0 1 7 7 6  )
+G_LOOP:  1  1  6   	7.363440e-01	( 0 0 2 7 7 5  )
+G_LOOP:  1  2  6   	7.451287e-01	( 0 0 3 7 7 4  )
+G_LOOP:  1  3  6   	7.429316e-01	( 1 1 0 6 6 7  )
+G_LOOP:  1  4  6   	7.374183e-01	( 1 1 2 6 6 5  )
+G_LOOP:  1  5  6   	7.396254e-01	( 1 1 3 6 6 4  )
+G_LOOP:  1  6  6   	7.350054e-01	( 2 2 0 5 5 7  )
+G_LOOP:  1  7  6   	7.395602e-01	( 2 2 1 5 5 6  )
+G_LOOP:  1  8  6   	7.422656e-01	( 2 2 3 5 5 4  )
+G_LOOP:  1  9  6   	7.457821e-01	( 3 3 0 4 4 7  )
+G_LOOP:  1  10  6   	7.440980e-01	( 3 3 1 4 4 6  )
+G_LOOP:  1  11  6   	7.435065e-01	( 3 3 2 4 4 5  )
+G_LOOP:  2  0  6   	7.580413e-01	( 0 1 2 7 6 5  )
+G_LOOP:  2  1  6   	7.594399e-01	( 0 1 5 7 6 2  )
+G_LOOP:  2  2  6   	7.602800e-01	( 0 6 2 7 1 5  )
+G_LOOP:  2  3  6   	7.603390e-01	( 0 6 5 7 1 2  )
+G_LOOP:  2  4  6   	7.621794e-01	( 0 1 3 7 6 4  )
+G_LOOP:  2  5  6   	7.652648e-01	( 0 1 4 7 6 3  )
+G_LOOP:  2  6  6   	7.622968e-01	( 0 6 3 7 1 4  )
+G_LOOP:  2  7  6   	7.616749e-01	( 0 6 4 7 1 3  )
+G_LOOP:  2  8  6   	7.563729e-01	( 0 2 3 7 5 4  )
+G_LOOP:  2  9  6   	7.595969e-01	( 0 2 4 7 5 3  )
+G_LOOP:  2  10  6   	7.609918e-01	( 0 5 3 7 2 4  )
+G_LOOP:  2  11  6   	7.607973e-01	( 0 5 4 7 2 3  )
+G_LOOP:  2  12  6   	7.604965e-01	( 1 2 3 6 5 4  )
+G_LOOP:  2  13  6   	7.608241e-01	( 1 2 4 6 5 3  )
+G_LOOP:  2  14  6   	7.583448e-01	( 1 5 3 6 2 4  )
+G_LOOP:  2  15  6   	7.602719e-01	( 1 5 4 6 2 3  )
+GACTION: 6.531885e+00
+CONGRAD5: time = 6.152890e-01 (fn F) masses = 1 iters = 600 mflops = 4.000337e+03
+ OK converged final_rsq= 8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+CONGRAD5: time = 9.218621e-02 (fn F) masses = 1 iters = 88 mflops = 3.915986e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 1 iters= 88
+PBP: mass 1.000000e-02     3.617167e-02  4.242414e-02  8.969963e-03  8.972030e-03 ( 1 of 1 )
+FACTION: mass = 1.000000e-02,  1.499519e+00 ( 1 of 1 )
+CONGRAD5: time = 6.182280e-01 (fn F) masses = 1 iters = 602 mflops = 3.994591e+03
+ OK converged final_rsq= 4.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 1.092000e-01 (fn F) masses = 1 iters = 104 mflops = 3.906926e+03
+ OK converged final_rsq= 5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 104
+PBP: mass 1.000000e-02     4.708103e-02  3.575377e-02  3.605491e-03  3.613895e-03 ( 1 of 1 )
+FACTION: mass = 1.000000e-02,  1.498510e+00 ( 1 of 1 )
+CONGRAD5: time = 6.165559e-01 (fn F) masses = 1 iters = 602 mflops = 4.005424e+03
+ OK converged final_rsq= 6.5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.177330e-01 (fn F) masses = 1 iters = 602 mflops = 3.997792e+03
+ OK converged final_rsq= 6.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.397951e-01 (Symanzik1) mflops = 3.782550e+03
+FFTIME:  time = 5.549860e-01 (asqtad3) terms = 2 mflops = 2.702399e+03
+CONGRAD5: time = 6.177368e-01 (fn F) masses = 1 iters = 602 mflops = 3.997767e+03
+ OK converged final_rsq= 6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.140718e-01 (fn F) masses = 1 iters = 600 mflops = 4.008266e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.396720e-01 (Symanzik1) mflops = 3.785882e+03
+FFTIME:  time = 5.062890e-01 (asqtad3) terms = 2 mflops = 2.962327e+03
+CONGRAD5: time = 6.179831e-01 (fn F) masses = 1 iters = 602 mflops = 3.996174e+03
+ OK converged final_rsq= 5.5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.140521e-01 (fn F) masses = 1 iters = 599 mflops = 4.001714e+03
+ OK converged final_rsq= 9.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 599
+GFTIME:   time = 1.401789e-01 (Symanzik1) mflops = 3.772192e+03
+FFTIME:  time = 5.053041e-01 (asqtad3) terms = 2 mflops = 2.968101e+03
+CONGRAD5: time = 6.174340e-01 (fn F) masses = 1 iters = 602 mflops = 3.999727e+03
+ OK converged final_rsq= 9.5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.170709e-01 (fn F) masses = 1 iters = 602 mflops = 4.002081e+03
+ OK converged final_rsq= 8.5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.394780e-01 (Symanzik1) mflops = 3.791149e+03
+FFTIME:  time = 5.048320e-01 (asqtad3) terms = 2 mflops = 2.970876e+03
+CONGRAD5: time = 6.195869e-01 (fn F) masses = 1 iters = 602 mflops = 3.985829e+03
+ OK converged final_rsq= 5.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.194971e-01 (fn F) masses = 1 iters = 602 mflops = 3.986408e+03
+ OK converged final_rsq= 6.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.393280e-01 (Symanzik1) mflops = 3.795230e+03
+FFTIME:  time = 5.058758e-01 (asqtad3) terms = 2 mflops = 2.964746e+03
+CONGRAD5: time = 6.194248e-01 (fn F) masses = 1 iters = 602 mflops = 3.986872e+03
+ OK converged final_rsq= 5.1e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.168530e-01 (fn F) masses = 1 iters = 602 mflops = 4.003495e+03
+ OK converged final_rsq= 4.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.402209e-01 (Symanzik1) mflops = 3.771063e+03
+FFTIME:  time = 5.077159e-01 (asqtad3) terms = 2 mflops = 2.954001e+03
+CONGRAD5: time = 6.177380e-01 (fn F) masses = 1 iters = 602 mflops = 3.997759e+03
+ OK converged final_rsq= 7.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.173141e-01 (fn F) masses = 1 iters = 602 mflops = 4.000504e+03
+ OK converged final_rsq= 3.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.394792e-01 (Symanzik1) mflops = 3.791117e+03
+FFTIME:  time = 5.066910e-01 (asqtad3) terms = 2 mflops = 2.959977e+03
+CONGRAD5: time = 6.173561e-01 (fn F) masses = 1 iters = 602 mflops = 4.000232e+03
+ OK converged final_rsq= 4.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.174910e-01 (fn F) masses = 1 iters = 602 mflops = 3.999358e+03
+ OK converged final_rsq= 7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.397920e-01 (Symanzik1) mflops = 3.782634e+03
+FFTIME:  time = 5.064020e-01 (asqtad3) terms = 2 mflops = 2.961666e+03
+CONGRAD5: time = 6.179721e-01 (fn F) masses = 1 iters = 602 mflops = 3.996244e+03
+ OK converged final_rsq= 9.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.189990e-01 (fn F) masses = 1 iters = 602 mflops = 3.989615e+03
+ OK converged final_rsq= 7.1e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.392791e-01 (Symanzik1) mflops = 3.796562e+03
+FFTIME:  time = 5.060110e-01 (asqtad3) terms = 2 mflops = 2.963954e+03
+CONGRAD5: time = 6.179750e-01 (fn F) masses = 1 iters = 602 mflops = 3.996226e+03
+ OK converged final_rsq= 8.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.133590e-01 (fn F) masses = 1 iters = 600 mflops = 4.012924e+03
+ OK converged final_rsq= 8.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.393631e-01 (Symanzik1) mflops = 3.794276e+03
+FFTIME:  time = 5.062020e-01 (asqtad3) terms = 2 mflops = 2.962836e+03
+CONGRAD5: time = 6.177490e-01 (fn F) masses = 1 iters = 602 mflops = 3.997688e+03
+ OK converged final_rsq= 7.3e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.143920e-01 (fn F) masses = 1 iters = 600 mflops = 4.006177e+03
+ OK converged final_rsq= 9.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.394899e-01 (Symanzik1) mflops = 3.790825e+03
+FFTIME:  time = 5.062089e-01 (asqtad3) terms = 2 mflops = 2.962795e+03
+CONGRAD5: time = 6.159880e-01 (fn F) masses = 1 iters = 602 mflops = 4.009117e+03
+ OK converged final_rsq= 4.1e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.161759e-01 (fn F) masses = 1 iters = 602 mflops = 4.007894e+03
+ OK converged final_rsq= 4.3e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.395700e-01 (Symanzik1) mflops = 3.788650e+03
+FFTIME:  time = 5.063119e-01 (asqtad3) terms = 2 mflops = 2.962193e+03
+CONGRAD5: time = 6.869001e-01 (fn F) masses = 1 iters = 669 mflops = 3.995370e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 669
+CONGRAD5: time = 6.177030e-01 (fn F) masses = 1 iters = 602 mflops = 3.997986e+03
+ OK converged final_rsq= 6.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.397970e-01 (Symanzik1) mflops = 3.782498e+03
+FFTIME:  time = 5.081661e-01 (asqtad3) terms = 2 mflops = 2.951384e+03
+CONGRAD5: time = 6.937501e-01 (fn F) masses = 1 iters = 676 mflops = 3.997312e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 676
+CONGRAD5: time = 6.188240e-01 (fn F) masses = 1 iters = 602 mflops = 3.990743e+03
+ OK converged final_rsq= 4.5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.391151e-01 (Symanzik1) mflops = 3.801038e+03
+FFTIME:  time = 5.071590e-01 (asqtad3) terms = 2 mflops = 2.957245e+03
+CONGRAD5: time = 6.955490e-01 (fn F) masses = 1 iters = 678 mflops = 3.998770e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 678
+CONGRAD5: time = 6.157660e-01 (fn F) masses = 1 iters = 600 mflops = 3.997238e+03
+ OK converged final_rsq= 9.1e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 600
+GFTIME:   time = 1.403649e-01 (Symanzik1) mflops = 3.767194e+03
+FFTIME:  time = 5.081460e-01 (asqtad3) terms = 2 mflops = 2.951501e+03
+PLAQ:	1.474744	1.476482
+P_LOOP:	-2.052642e-02	-2.969863e-03
+G_LOOP:  0  0  4   	1.475984e+00	( 0 1 7 6  )
+G_LOOP:  0  1  4   	1.473090e+00	( 0 2 7 5  )
+G_LOOP:  0  2  4   	1.479607e+00	( 0 3 7 4  )
+G_LOOP:  0  3  4   	1.475158e+00	( 1 2 6 5  )
+G_LOOP:  0  4  4   	1.475008e+00	( 1 3 6 4  )
+G_LOOP:  0  5  4   	1.474829e+00	( 2 3 5 4  )
+G_LOOP:  1  0  6   	7.184971e-01	( 0 0 1 7 7 6  )
+G_LOOP:  1  1  6   	7.159353e-01	( 0 0 2 7 7 5  )
+G_LOOP:  1  2  6   	7.240807e-01	( 0 0 3 7 7 4  )
+G_LOOP:  1  3  6   	7.200422e-01	( 1 1 0 6 6 7  )
+G_LOOP:  1  4  6   	7.173547e-01	( 1 1 2 6 6 5  )
+G_LOOP:  1  5  6   	7.152072e-01	( 1 1 3 6 6 4  )
+G_LOOP:  1  6  6   	7.124169e-01	( 2 2 0 5 5 7  )
+G_LOOP:  1  7  6   	7.127769e-01	( 2 2 1 5 5 6  )
+G_LOOP:  1  8  6   	7.156942e-01	( 2 2 3 5 5 4  )
+G_LOOP:  1  9  6   	7.235363e-01	( 3 3 0 4 4 7  )
+G_LOOP:  1  10  6   	7.168376e-01	( 3 3 1 4 4 6  )
+G_LOOP:  1  11  6   	7.184888e-01	( 3 3 2 4 4 5  )
+G_LOOP:  2  0  6   	7.309402e-01	( 0 1 2 7 6 5  )
+G_LOOP:  2  1  6   	7.334683e-01	( 0 1 5 7 6 2  )
+G_LOOP:  2  2  6   	7.358878e-01	( 0 6 2 7 1 5  )
+G_LOOP:  2  3  6   	7.311164e-01	( 0 6 5 7 1 2  )
+G_LOOP:  2  4  6   	7.339033e-01	( 0 1 3 7 6 4  )
+G_LOOP:  2  5  6   	7.386881e-01	( 0 1 4 7 6 3  )
+G_LOOP:  2  6  6   	7.380549e-01	( 0 6 3 7 1 4  )
+G_LOOP:  2  7  6   	7.320259e-01	( 0 6 4 7 1 3  )
+G_LOOP:  2  8  6   	7.381620e-01	( 0 2 3 7 5 4  )
+G_LOOP:  2  9  6   	7.344164e-01	( 0 2 4 7 5 3  )
+G_LOOP:  2  10  6   	7.362792e-01	( 0 5 3 7 2 4  )
+G_LOOP:  2  11  6   	7.341192e-01	( 0 5 4 7 2 3  )
+G_LOOP:  2  12  6   	7.332222e-01	( 1 2 3 6 5 4  )
+G_LOOP:  2  13  6   	7.315865e-01	( 1 2 4 6 5 3  )
+G_LOOP:  2  14  6   	7.331640e-01	( 1 5 3 6 2 4  )
+G_LOOP:  2  15  6   	7.295510e-01	( 1 5 4 6 2 3  )
+GACTION: 6.646384e+00
+CONGRAD5: time = 6.145949e-01 (fn F) masses = 1 iters = 599 mflops = 3.998180e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 2 iters= 599
+CONGRAD5: time = 9.492302e-02 (fn F) masses = 1 iters = 91 mflops = 3.932732e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 1 iters= 91
+PBP: mass 1.000000e-02     4.339416e-02  3.936487e-02  7.421302e-03  7.418751e-03 ( 1 of 1 )
+FACTION: mass = 1.000000e-02,  1.502066e+00 ( 1 of 1 )
+CONGRAD5: time = 6.445181e-01 (fn F) masses = 1 iters = 602 mflops = 3.831650e+03
+ OK converged final_rsq= 7.1e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 1.313782e-01 (fn F) masses = 1 iters = 126 mflops = 3.934339e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 1 iters= 126
+PBP: mass 1.000000e-02     4.858556e-02  4.277414e-02  -1.701513e-03  -1.703251e-03 ( 1 of 1 )
+FACTION: mass = 1.000000e-02,  1.501393e+00 ( 1 of 1 )
+CONGRAD5: time = 6.176381e-01 (fn F) masses = 1 iters = 602 mflops = 3.998406e+03
+ OK converged final_rsq= 8.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.170800e-01 (fn F) masses = 1 iters = 602 mflops = 4.002022e+03
+ OK converged final_rsq= 5.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.392779e-01 (Symanzik1) mflops = 3.796594e+03
+FFTIME:  time = 5.052762e-01 (asqtad3) terms = 2 mflops = 2.968264e+03
+CONGRAD5: time = 7.032950e-01 (fn F) masses = 1 iters = 683 mflops = 3.983893e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 683
+CONGRAD5: time = 6.185191e-01 (fn F) masses = 1 iters = 602 mflops = 3.992711e+03
+ OK converged final_rsq= 7.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.394889e-01 (Symanzik1) mflops = 3.790851e+03
+FFTIME:  time = 5.061541e-01 (asqtad3) terms = 2 mflops = 2.963116e+03
+CONGRAD5: time = 6.179891e-01 (fn F) masses = 1 iters = 602 mflops = 3.996135e+03
+ OK converged final_rsq= 6.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.404440e-01 (fn F) masses = 1 iters = 602 mflops = 3.856024e+03
+ OK converged final_rsq= 7.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.395969e-01 (Symanzik1) mflops = 3.787918e+03
+FFTIME:  time = 5.083699e-01 (asqtad3) terms = 2 mflops = 2.950201e+03
+CONGRAD5: time = 6.182461e-01 (fn F) masses = 1 iters = 602 mflops = 3.994474e+03
+ OK converged final_rsq= 8.2e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.162701e-01 (fn F) masses = 1 iters = 602 mflops = 4.007282e+03
+ OK converged final_rsq= 4.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.390190e-01 (Symanzik1) mflops = 3.803666e+03
+FFTIME:  time = 5.050519e-01 (asqtad3) terms = 2 mflops = 2.969583e+03
+CONGRAD5: time = 6.777339e-01 (fn F) masses = 1 iters = 661 mflops = 4.000983e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 661
+CONGRAD5: time = 6.162469e-01 (fn F) masses = 1 iters = 602 mflops = 4.007432e+03
+ OK converged final_rsq= 8.3e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.394918e-01 (Symanzik1) mflops = 3.790774e+03
+FFTIME:  time = 5.077271e-01 (asqtad3) terms = 2 mflops = 2.953936e+03
+CONGRAD5: time = 6.916189e-01 (fn F) masses = 1 iters = 674 mflops = 3.997767e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 674
+CONGRAD5: time = 6.175721e-01 (fn F) masses = 1 iters = 602 mflops = 3.998833e+03
+ OK converged final_rsq= 6.3e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.391351e-01 (Symanzik1) mflops = 3.800491e+03
+FFTIME:  time = 5.058861e-01 (asqtad3) terms = 2 mflops = 2.964686e+03
+CONGRAD5: time = 6.178992e-01 (fn F) masses = 1 iters = 602 mflops = 3.996716e+03
+ OK converged final_rsq= 9.3e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.178200e-01 (fn F) masses = 1 iters = 602 mflops = 3.997228e+03
+ OK converged final_rsq= 5.5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.396852e-01 (Symanzik1) mflops = 3.785526e+03
+FFTIME:  time = 5.062659e-01 (asqtad3) terms = 2 mflops = 2.962462e+03
+CONGRAD5: time = 6.181378e-01 (fn F) masses = 1 iters = 602 mflops = 3.995173e+03
+ OK converged final_rsq= 4.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.821530e-01 (fn F) masses = 1 iters = 666 mflops = 4.005133e+03
+ OK converged final_rsq= 9.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 666
+GFTIME:   time = 1.393180e-01 (Symanzik1) mflops = 3.795503e+03
+FFTIME:  time = 5.071530e-01 (asqtad3) terms = 2 mflops = 2.957280e+03
+CONGRAD5: time = 6.918328e-01 (fn F) masses = 1 iters = 660 mflops = 3.913517e+03
+ OK converged final_rsq= 5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 4 iters= 660
+CONGRAD5: time = 6.190159e-01 (fn F) masses = 1 iters = 602 mflops = 3.989506e+03
+ OK converged final_rsq= 4.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.396532e-01 (Symanzik1) mflops = 3.786392e+03
+FFTIME:  time = 5.072701e-01 (asqtad3) terms = 2 mflops = 2.956597e+03
+CONGRAD5: time = 6.176422e-01 (fn F) masses = 1 iters = 602 mflops = 3.998379e+03
+ OK converged final_rsq= 9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.189771e-01 (fn F) masses = 1 iters = 602 mflops = 3.989756e+03
+ OK converged final_rsq= 6.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.393631e-01 (Symanzik1) mflops = 3.794276e+03
+FFTIME:  time = 5.071900e-01 (asqtad3) terms = 2 mflops = 2.957064e+03
+CONGRAD5: time = 7.299340e-01 (fn F) masses = 1 iters = 713 mflops = 4.007102e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 713
+CONGRAD5: time = 6.165419e-01 (fn F) masses = 1 iters = 602 mflops = 4.005515e+03
+ OK converged final_rsq= 5.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.393681e-01 (Symanzik1) mflops = 3.794139e+03
+FFTIME:  time = 5.065770e-01 (asqtad3) terms = 2 mflops = 2.960642e+03
+CONGRAD5: time = 7.253191e-01 (fn F) masses = 1 iters = 708 mflops = 4.004318e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 708
+CONGRAD5: time = 6.167550e-01 (fn F) masses = 1 iters = 602 mflops = 4.004131e+03
+ OK converged final_rsq= 4.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.389380e-01 (Symanzik1) mflops = 3.805885e+03
+FFTIME:  time = 5.054410e-01 (asqtad3) terms = 2 mflops = 2.967297e+03
+CONGRAD5: time = 6.182082e-01 (fn F) masses = 1 iters = 602 mflops = 3.994719e+03
+ OK converged final_rsq= 5.7e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 6.956339e-01 (fn F) masses = 1 iters = 680 mflops = 4.010076e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 680
+GFTIME:   time = 1.393449e-01 (Symanzik1) mflops = 3.794769e+03
+FFTIME:  time = 5.066960e-01 (asqtad3) terms = 2 mflops = 2.959947e+03
+CONGRAD5: time = 6.829259e-01 (fn F) masses = 1 iters = 666 mflops = 4.000599e+03
+ OK converged final_rsq= 5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 4 iters= 666
+CONGRAD5: time = 6.158259e-01 (fn F) masses = 1 iters = 602 mflops = 4.010172e+03
+ OK converged final_rsq= 8.6e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+GFTIME:   time = 1.395240e-01 (Symanzik1) mflops = 3.789899e+03
+FFTIME:  time = 5.077879e-01 (asqtad3) terms = 2 mflops = 2.953582e+03
+CONGRAD5: time = 7.200651e-01 (fn F) masses = 1 iters = 703 mflops = 4.005051e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 703
+CONGRAD5: time = 7.222822e-01 (fn F) masses = 1 iters = 704 mflops = 3.998437e+03
+ OK converged final_rsq= 5e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 4 iters= 704
+GFTIME:   time = 1.393480e-01 (Symanzik1) mflops = 3.794685e+03
+FFTIME:  time = 5.048170e-01 (asqtad3) terms = 2 mflops = 2.970964e+03
+PLAQ:	1.460193	1.460439
+P_LOOP:	-5.681515e-03	1.470983e-02
+G_LOOP:  0  0  4   	1.462860e+00	( 0 1 7 6  )
+G_LOOP:  0  1  4   	1.459667e+00	( 0 2 7 5  )
+G_LOOP:  0  2  4   	1.464225e+00	( 0 3 7 4  )
+G_LOOP:  0  3  4   	1.458053e+00	( 1 2 6 5  )
+G_LOOP:  0  4  4   	1.458102e+00	( 1 3 6 4  )
+G_LOOP:  0  5  4   	1.458991e+00	( 2 3 5 4  )
+G_LOOP:  1  0  6   	7.044114e-01	( 0 0 1 7 7 6  )
+G_LOOP:  1  1  6   	7.001683e-01	( 0 0 2 7 7 5  )
+G_LOOP:  1  2  6   	7.064534e-01	( 0 0 3 7 7 4  )
+G_LOOP:  1  3  6   	7.046912e-01	( 1 1 0 6 6 7  )
+G_LOOP:  1  4  6   	6.971760e-01	( 1 1 2 6 6 5  )
+G_LOOP:  1  5  6   	6.963067e-01	( 1 1 3 6 6 4  )
+G_LOOP:  1  6  6   	6.973758e-01	( 2 2 0 5 5 7  )
+G_LOOP:  1  7  6   	6.981232e-01	( 2 2 1 5 5 6  )
+G_LOOP:  1  8  6   	6.977841e-01	( 2 2 3 5 5 4  )
+G_LOOP:  1  9  6   	7.051219e-01	( 3 3 0 4 4 7  )
+G_LOOP:  1  10  6   	7.012289e-01	( 3 3 1 4 4 6  )
+G_LOOP:  1  11  6   	6.983391e-01	( 3 3 2 4 4 5  )
+G_LOOP:  2  0  6   	7.119569e-01	( 0 1 2 7 6 5  )
+G_LOOP:  2  1  6   	7.136081e-01	( 0 1 5 7 6 2  )
+G_LOOP:  2  2  6   	7.205864e-01	( 0 6 2 7 1 5  )
+G_LOOP:  2  3  6   	7.129568e-01	( 0 6 5 7 1 2  )
+G_LOOP:  2  4  6   	7.151807e-01	( 0 1 3 7 6 4  )
+G_LOOP:  2  5  6   	7.179215e-01	( 0 1 4 7 6 3  )
+G_LOOP:  2  6  6   	7.225979e-01	( 0 6 3 7 1 4  )
+G_LOOP:  2  7  6   	7.152602e-01	( 0 6 4 7 1 3  )
+G_LOOP:  2  8  6   	7.193233e-01	( 0 2 3 7 5 4  )
+G_LOOP:  2  9  6   	7.155409e-01	( 0 2 4 7 5 3  )
+G_LOOP:  2  10  6   	7.174311e-01	( 0 5 3 7 2 4  )
+G_LOOP:  2  11  6   	7.158922e-01	( 0 5 4 7 2 3  )
+G_LOOP:  2  12  6   	7.121399e-01	( 1 2 3 6 5 4  )
+G_LOOP:  2  13  6   	7.112940e-01	( 1 2 4 6 5 3  )
+G_LOOP:  2  14  6   	7.106608e-01	( 1 5 3 6 2 4  )
+G_LOOP:  2  15  6   	7.096770e-01	( 1 5 4 6 2 3  )
+GACTION: 6.719232e+00
+CONGRAD5: time = 6.166959e-01 (fn F) masses = 1 iters = 602 mflops = 4.004515e+03
+ OK converged final_rsq= 8.8e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 1.261442e-01 (fn F) masses = 1 iters = 122 mflops = 3.967501e+03
+ OK converged final_rsq= 9.9e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 1 iters= 122
+PBP: mass 1.000000e-02     5.555199e-02  4.368940e-02  -4.331524e-03  -4.348939e-03 ( 1 of 1 )
+FACTION: mass = 1.000000e-02,  1.501287e+00 ( 1 of 1 )
+CONGRAD5: time = 6.164908e-01 (fn F) masses = 1 iters = 602 mflops = 4.005847e+03
+ OK converged final_rsq= 6.4e-11 (cf 1e-10) rel = 1 (cf 0) restarts = 3 iters= 602
+CONGRAD5: time = 1.145911e-01 (fn F) masses = 1 iters = 110 mflops = 3.937913e+03
+ OK converged final_rsq= 1e-10 (cf 1e-10) rel = 1 (cf 0) restarts = 1 iters= 110
+PBP: mass 1.000000e-02     5.376833e-02  4.562878e-02  -5.653563e-03  -5.648705e-03 ( 1 of 1 )
+FACTION: mass = 1.000000e-02,  1.501514e+00 ( 1 of 1 )
+RUNNING COMPLETED
+average cg iters for step= 1.219000e+03
+Time = 1.377230e+02 seconds
+total_iters = 152537
+Checksums 7bb45b68 d977e3c0
+Saved gauge configuration in parallel to binary file lat_p64_size128_2
+Time stamp Wed May 18 22:14:51 2022
+Wrote info file lat_p64_size128_2.info
+Time to save = 4.050493e-02
+CHECK PLAQ: 1.460193e+00 1.460439e+00
+CHECK NERSC LINKTR: 1.427689e-01 CKSUM: 5cf947c6
+
+
+get_i(0): EOF on input.
+Elapsed total time: 157.626476
+exit: Wed May 18 22:14:51 2022
+
