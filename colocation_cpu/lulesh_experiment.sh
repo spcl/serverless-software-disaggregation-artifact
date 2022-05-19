@@ -23,8 +23,7 @@ fi
 
 echo "Running benchmark ${experiment_name} with size ${experiment_size}, on ${experiment_nodes}, on each on using ${experiment_cores} cores. CPU Mask: ${mask}"
 
-#for rep in 0 1 2 3 4 5; do
-for rep in 6 7 8 9; do
+for rep in 0 1 2 3 4 5 6 7 8 9; do
 	for size in 15 18 20 25; do
 
 		echo "Start $size, repetition $rep"
