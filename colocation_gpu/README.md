@@ -1,18 +1,19 @@
 
-Launching the FaaS remote memory benchmark. In this benchmark, we deploy rFaaS executor on a cluster node. On the same node, we're going to submit LULESH as a traditional batch job.
-Then, on a second node, we execute a client benchmark that allocates and uses the remote memory funtion.
+In this benchmark, we deploy containerized GPU applications on a cluster node,
+On the same node, we're going to submit LULESH and MILC as a traditional batch job.
 
-This benchmark has been tested and evaluated on systems with SLURM, node sharing enabled, and an interconnect with RoCE support.
-Since the implementation is using `ibverbs`, it should also work on InfiniBand networks.
+This benchmark has been tested and evaluated on Piz Daint system with SLURM and node sharing enabled.
 
 ## Preparation
 
 1. Build extended rFaaS with remote memory functions by running `build.sh` in `src/remote_memory`.
 To configure rFaaS dependencies, please inspect the README of the package. It should be sufficient to set `PKG_CONFIG_PATH` environment variable to point to installation directories of `pistache`, `rdmacm`, and `ibverbs`.
 
-2. Build LULESH from sources in `external/LULESH`.
+2. Build LULESH from sources in `external/LULESH` (build scripts are provided).
 
-## Preparing rFaaS executor.
+3. Build MILC from sources in `external/MILC` (build scripts are provided).
+
+## Preparing baseline
 
 1. SSH to the node where you're going to deploy the co-located batch job and remote memory function.
 
@@ -41,5 +42,3 @@ To configure rFaaS dependencies, please inspect the README of the package. It sh
 2. Launch the co-located LULESH `sbatch < slurm_lulesh_27.sh`.
 
 3. Stop the client benchmark.
-
-
