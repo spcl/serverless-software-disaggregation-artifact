@@ -40,12 +40,22 @@ def check_baseline_data():
     nas_container = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.NAS)
     check(nas_container, ['benchmark', 'size', 'ranks'], 15, 15.0)
 
+    print("Baseline, Daint MC, MILC", end='... ')
+    milc_data = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.MILC, ranks=64)
+    #print(milc_data)
+    check(milc_data, ['size'], 20, 15.0)
+
 def check_cpu_colocated_data():
 
     print("CPU Colocation, Daint MC, LULESH, NAS", end='... ')
     lulesh, nas = load_data(BenchmarkType.COLOCATION_CPU, System.DAINT_MC, Benchmark.LULESH, colocated_benchmark = Benchmark.NAS, ranks = 64)
-    check(lulesh, ['size', 'benchmark', 'benchmark_size'], 10, 5.0)
-    check(nas, ['size', 'benchmark', 'ranks', 'lulesh_size'], 10, 15.0)
+    check(lulesh, ['size', 'colocated_benchmark', 'colocated_benchmark_size'], 10, 5.0)
+    check(nas, ['size', 'benchmark', 'ranks', 'batch_benchmark_size'], 10, 15.0)
+
+    print("CPU Colocation, Daint MC, MILC, NAS", end='... ')
+    lulesh, nas = load_data(BenchmarkType.COLOCATION_CPU, System.DAINT_MC, Benchmark.MILC, colocated_benchmark = Benchmark.NAS, ranks = 64)
+    check(lulesh, ['size', 'colocated_benchmark', 'colocated_benchmark_size'], 10, 5.0)
+    check(nas, ['size', 'benchmark', 'ranks', 'batch_benchmark_size'], 10, 15.0)
 
 check_baseline_data()
 print('----------')
