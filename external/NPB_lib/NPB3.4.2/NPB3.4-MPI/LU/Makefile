@@ -5,7 +5,7 @@ VEC=
 
 include ../config/make.def
 
-OBJS = lu.o lu_data$(VEC).o init_comm.o read_input.o bcast_inputs.o \
+OBJS = lu_data$(VEC).o init_comm.o read_input.o bcast_inputs.o \
        proc_grid.o neighbors.o nodedim.o subdomain.o setcoeff.o \
        setbv.o exact.o setiv.o erhs.o ssor$(VEC).o exchange_1.o exchange_3.o \
        exchange_4.o exchange_5.o exchange_6.o rhs.o l2norm.o \
@@ -25,13 +25,25 @@ ${PROGRAM}: config
 		${MAKE} VEC=_vec exec;		\
 	else					\
 		${MAKE} exec;			\
+		${MAKE} lu-lib;			\
+		${MAKE} tester;			\
 	fi
 
-exec: $(OBJS)
-	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} ${FMPI_LIB}
+exec: $(OBJS) lu.o
+	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} lu.o ${FMPI_LIB}
+
+lu-lib: ${OBJS} lu_lib.o
+	${FLINK} ${FLINKFLAGS}  -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} lu_lib.o ${FMPI_LIB}
+
+# Local tester app that uses the library version to execute code.
+tester: tester.o
+	${CLINK} $< -o ${PROGRAM}.tester -l$(notdir ${PROGRAM}) -L ${BINDIR} -Wl,-rpath,$(realpath ${BINDIR})
 
 .f90.o :
 	${FCOMPILE} $<
+
+.c.o:
+	${CCOMPILE} $<
 
 lu.o:		lu.f90 lu_data.o mpinpb.o
 bcast_inputs.o:	bcast_inputs.f90 lu_data.o mpinpb.o
