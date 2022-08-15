@@ -1,6 +1,7 @@
 PROGRAM  = $(BINDIR)/$(BENCHMARK).$(CLASS).x
-FCOMPILE = $(MPIFC) -c $(FMPI_INC) $(FFLAGS)
-CCOMPILE = $(MPICC) -c $(CMPI_INC) $(CFLAGS)
+# Make sure that we can compile all of the code into a shared library.
+FCOMPILE = $(MPIFC) -fPIC -c $(FMPI_INC) $(FFLAGS)
+CCOMPILE = $(MPICC) -fPIC -c $(CMPI_INC) $(CFLAGS)
 
 # Class "U" is used internally by the setparams program to mean
 # "unknown". This means that if you don't specify CLASS=

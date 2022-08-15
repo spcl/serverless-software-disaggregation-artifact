@@ -6,7 +6,7 @@ VEC=
 include ../config/make.def
 
 
-OBJS = bt.o bt_data.o make_set.o initialize.o exact_solution.o \
+OBJS = bt_data.o make_set.o initialize.o exact_solution.o \
        exact_rhs.o set_constants.o adi.o define.o copy_faces.o \
        rhs.o solve_subs.o x_solve$(VEC).o y_solve$(VEC).o z_solve$(VEC).o \
        add.o error.o verify.o setup_mpi.o mpinpb.o \
@@ -26,7 +26,8 @@ ${PROGRAM}: config
 		${MAKE} exec;			\
 	fi
 
-exec: $(OBJS)
+# New object file for the library version
+exec: $(OBJS) bt.o bt_lib.o
 	@if [ x$(SUBTYPE) = xfull -o x$(SUBTYPE) = xFULL ] ; then	\
 		${MAKE} bt-full;		\
 	elif [ x$(SUBTYPE) = xsimple -o x$(SUBTYPE) = xSIMPLE ] ; then	\
@@ -37,10 +38,15 @@ exec: $(OBJS)
 		${MAKE} bt-epio;		\
 	else					\
 		${MAKE} bt-bt;			\
+		${MAKE} bt-lib;			\
+		${MAKE} tester;			\
 	fi
 
-bt-bt: ${OBJS} btio.o
-	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} btio.o ${FMPI_LIB}
+bt-bt: ${OBJS} bt.o btio.o
+	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} bt.o btio.o ${FMPI_LIB}
+
+bt-lib: ${OBJS} bt_lib.o btio.o
+	${FLINK} ${FLINKFLAGS}  -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} bt_lib.o btio.o ${FMPI_LIB}
 
 bt-full: ${OBJS} full_mpiio.o btio_common.o
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM}.mpi_io_full ${OBJS} btio_common.o full_mpiio.o ${FMPI_LIB}
@@ -53,6 +59,10 @@ bt-fortran: ${OBJS} fortran_io.o btio_common.o
 
 bt-epio: ${OBJS} epio.o btio_common.o
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM}.ep_io ${OBJS} btio_common.o epio.o ${FMPI_LIB}
+
+# Local tester app that uses the library version to execute code.
+tester: tester.o
+	${CLINK} $< -o ${PROGRAM}.tester -l$(notdir ${PROGRAM}) -L ${BINDIR} -Wl,-rpath,$(realpath ${BINDIR})
 
 .f90.o:
 	${FCOMPILE} $<
