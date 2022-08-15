@@ -46,7 +46,8 @@ FMPI_INC =
 #---------------------------------------------------------------------------
 # Global *compile time* flags for Fortran programs
 #---------------------------------------------------------------------------
-FFLAGS	= -O3 -fallow-argument-mismatch
+#FFLAGS	= -O3 -fallow-argument-mismatch
+FFLAGS	= -O3
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable 
@@ -75,7 +76,7 @@ FLINKFLAGS = $(FFLAGS)
 #---------------------------------------------------------------------------
 # This is the C compiler used for MPI programs
 #---------------------------------------------------------------------------
-MPICC = mpicc
+MPICC = cc
 # This links MPI C programs; usually the same as ${MPICC}
 CLINK	= $(MPICC)
 
