@@ -6,6 +6,7 @@ import pandas as pd
 
 from enum import Enum
 from pathlib import Path
+from typing import Optional
 
 BASE_PATH = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 
@@ -79,19 +80,20 @@ def load_milc(path: Path):
 
     return data
 
-def load_baseline_lulesh(path: Path, ranks: int):
+def load_baseline_lulesh(path: Path, ranks: int, spread: Optional[int] = None):
 
     data = []
 
-    for spread in [8,16,20,24,28,32]:
+    if spread is not None:
+        path = os.path.join(path, f'lulesh_{ranks}', f'{Benchmark.LULESH.value}_{spread}')
+    else:
+        path = os.path.join(path, f'lulesh_{ranks}')
 
-        d = load_lulesh(os.path.join(path, f'lulesh_{ranks}', f'{Benchmark.LULESH.value}_{spread}'))
-        df = pd.DataFrame(data=d, columns=['size', 'time'])
-        df['ranks_per_node'] = spread
-        data.append(df)
-    
-    df = pd.concat(data)
+    d = load_lulesh(path)
+    df = pd.DataFrame(data=d, columns=['size', 'time'])
+    df['ranks_per_node'] = spread
     df['ranks'] = ranks
+
     return df
 
 def load_baseline_nas(path: Path):

@@ -31,7 +31,7 @@ def check(df, groupby_args, expected_samples, cov):
 def check_baseline_data():
 
     print("Baseline, Daint MC, LULESH", end='... ')
-    lulesh_time = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.LULESH, ranks = 64)
+    lulesh_time = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.LULESH, ranks = 64, spread=32)
     # we ignore size = 10 -> we do not use it 
     normal_lulesh = lulesh_time.loc[(lulesh_time['ranks_per_node'] == 32) & lulesh_time.size > 10]
     check(normal_lulesh, ['size'], 20, 5.0)
@@ -42,8 +42,15 @@ def check_baseline_data():
 
     print("Baseline, Daint MC, MILC", end='... ')
     milc_data = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.MILC, ranks=64)
-    #print(milc_data)
-    check(milc_data, ['size'], 20, 15.0)
+    check(milc_data, ['size'], 20, 5.0)
+
+    print("Baseline, Ault, LULESH", end='... ')
+    lulesh = load_data(BenchmarkType.BASELINE, System.AULT, Benchmark.LULESH, ranks = 27)
+    check(lulesh, ['size'], 20, 5.0)
+
+    print("Baseline, Ault, MILC", end='... ')
+    milc = load_data(BenchmarkType.BASELINE, System.AULT, Benchmark.MILC, ranks = 32)
+    check(milc, ['size'], 20, 5.0)
 
 def check_cpu_colocated_data():
 
@@ -56,6 +63,10 @@ def check_cpu_colocated_data():
     lulesh, nas = load_data(BenchmarkType.COLOCATION_CPU, System.DAINT_MC, Benchmark.MILC, colocated_benchmark = Benchmark.NAS, ranks = 64)
     check(lulesh, ['size', 'colocated_benchmark', 'colocated_benchmark_size'], 10, 5.0)
     check(nas, ['size', 'benchmark', 'ranks', 'batch_benchmark_size'], 10, 15.0)
+
+    # FIXME: co-location with functions
+
+    # FIXME: co-location with NAS
 
 check_baseline_data()
 print('----------')
