@@ -43,7 +43,7 @@ def check_baseline_data():
     check(nas_container, ['benchmark', 'size', 'ranks'], 15, 15.0)
 
     print("Baseline, Daint MC, MILC", end='... ')
-    milc_data = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.MILC, ranks=64)
+    milc_data = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.MILC, ranks=64, spread=32)
     check(milc_data, ['size'], 20, 5.0)
 
     print("Baseline, Ault, LULESH", end='... ')

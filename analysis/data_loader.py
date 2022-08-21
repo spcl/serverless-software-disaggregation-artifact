@@ -130,10 +130,13 @@ def load_baseline_nas(path: Path):
 
     return nas_container
 
-def load_baseline_milc(path: Path, ranks: int):
+def load_baseline_milc(path: Path, ranks: int, spread: Optional[int] = None):
 
-    spread = 32
-    data = load_milc(os.path.join(path, f'{Benchmark.MILC.value}_{ranks}', f'{Benchmark.MILC.value}_{spread}'))
+    if spread is not None:
+        path = os.path.join(path, f'{Benchmark.MILC.value}_{ranks}', f'{Benchmark.MILC.value}_{spread}')
+    else:
+        path = os.path.join(path, f'{Benchmark.MILC.value}_{ranks}')
+    data = load_milc(path)
     df = pd.DataFrame(data=data, columns=['size', 'repetition', 'time'])
     df['ranks'] = ranks
     df['ranks_per_node'] = spread
