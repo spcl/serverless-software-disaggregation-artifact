@@ -14,7 +14,8 @@ libmpi.a: mpi_dummy.o mpi_dummy_c.o wtime.o
 
 # Allows compilation with modern gfortran versions
 mpi_dummy.o: mpi_dummy.f90 mpif.h
-	$(FC) -fallow-argument-mismatch -c mpi_dummy.f90
+	#$(FC) -fallow-argument-mismatch -c mpi_dummy.f90
+	$(FC) -c mpi_dummy.f90
 # For a Cray C90, try:
 #	cf90 -dp -c mpi_dummy.f90
 # For an IBM 590, try:

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import os
+
 from data_loader import load_data, BenchmarkType, Benchmark, System
 
 
@@ -31,7 +33,7 @@ def check(df, groupby_args, expected_samples, cov):
 def check_baseline_data():
 
     print("Baseline, Daint MC, LULESH", end='... ')
-    lulesh_time = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.LULESH, ranks = 64)
+    lulesh_time = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.LULESH, ranks = 64, spread=32)
     # we ignore size = 10 -> we do not use it 
     normal_lulesh = lulesh_time.loc[(lulesh_time['ranks_per_node'] == 32) & lulesh_time.size > 10]
     check(normal_lulesh, ['size'], 20, 5.0)
@@ -42,20 +44,72 @@ def check_baseline_data():
 
     print("Baseline, Daint MC, MILC", end='... ')
     milc_data = load_data(BenchmarkType.BASELINE, System.DAINT_MC, Benchmark.MILC, ranks=64)
-    #print(milc_data)
-    check(milc_data, ['size'], 20, 15.0)
+    check(milc_data, ['size'], 20, 5.0)
+
+    print("Baseline, Ault, LULESH", end='... ')
+    lulesh = load_data(BenchmarkType.BASELINE, System.AULT, Benchmark.LULESH, ranks = 27)
+    check(lulesh, ['size'], 20, 5.0)
+
+    print("Baseline, Ault, MILC", end='... ')
+    milc = load_data(BenchmarkType.BASELINE, System.AULT, Benchmark.MILC, ranks = 32)
+    check(milc, ['size'], 20, 5.0)
 
 def check_cpu_colocated_data():
 
-    print("CPU Colocation, Daint MC, LULESH, NAS", end='... ')
-    lulesh, nas = load_data(BenchmarkType.COLOCATION_CPU, System.DAINT_MC, Benchmark.LULESH, colocated_benchmark = Benchmark.NAS, ranks = 64)
-    check(lulesh, ['size', 'colocated_benchmark', 'colocated_benchmark_size'], 10, 5.0)
-    check(nas, ['size', 'benchmark', 'ranks', 'batch_benchmark_size'], 10, 15.0)
+    for benchmark in [Benchmark.LULESH, Benchmark.MILC]:
 
-    print("CPU Colocation, Daint MC, MILC, NAS", end='... ')
-    lulesh, nas = load_data(BenchmarkType.COLOCATION_CPU, System.DAINT_MC, Benchmark.MILC, colocated_benchmark = Benchmark.NAS, ranks = 64)
-    check(lulesh, ['size', 'colocated_benchmark', 'colocated_benchmark_size'], 10, 5.0)
-    check(nas, ['size', 'benchmark', 'ranks', 'batch_benchmark_size'], 10, 15.0)
+        print(f"CPU Colocation, Daint MC, {benchmark.value}, NAS", end='... ')
+
+        path, batch, nas = load_data(
+            BenchmarkType.COLOCATION_CPU,
+            System.DAINT_MC,
+            benchmark,
+            colocated_benchmark = Benchmark.NAS,
+            ranks = 64,
+            include_path = True
+        )
+        check(batch, ['size', 'colocated_benchmark', 'colocated_benchmark_size'], 20, 5.0)
+        check(nas, ['size', 'benchmark', 'ranks', 'batch_benchmark_size'], 10, 15.0)
+
+        # Remove data where the batch job did not finish correctly - SLURM issues.
+        nas_mi = nas.set_index([
+            'batch_benchmark_ranks', 'batch_benchmark_size',
+            'batch_benchmark_repetition', 'benchmark', 'size'
+        ])
+        batch_mi = batch.set_index([
+            'ranks', 'size', 'repetition',
+            'colocated_benchmark', 'colocated_benchmark_size'
+        ])
+
+        for index, row in nas_mi[~nas_mi.index.isin(batch_mi.index)].iterrows():
+
+            batch_size = index[1]
+            batch_repetition = index[2]
+            colocated_bench = index[3]
+            colocated_size = index[4]
+
+            batch_path = os.path.join(
+                path,
+                f'nas_{batch_size}_{colocated_bench}_{colocated_size}',
+                f'{benchmark.value}_{batch_size}_{batch_repetition}'
+            )
+            for ext in ['.out', '.err']:
+
+                if os.path.exists(batch_path + ext):
+                    os.remove(batch_path + ext)
+
+            if os.path.exists(row.path):
+                os.remove(row.path)
+
+        # Verify that all data for co-located benchmark has a correspondence to a batch job
+        if nas_mi[~nas_mi.index.isin(batch_mi.index)].shape[0] > 0:
+            print("Error! NAS data for repetitions with no batch information")
+            print(nas_mi[~nas_mi.index.isin(batch_mi.index)])
+
+
+    # FIXME: co-location with functions
+
+    # FIXME: co-location with NAS
 
 check_baseline_data()
 print('----------')
