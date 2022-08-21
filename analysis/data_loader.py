@@ -62,12 +62,16 @@ def load_lulesh(path: Path):
 
         with open(f, 'r') as fp:
             for line in lines_that_start_with("Elapsed time", fp):
-                size = int(f.split('_')[-2])
-                data.append([size, float(line.split()[-2])])
+
+                # format: lulesh_{size}_{rep}.out 
+                run_ids = f.split('_')
+                size = int(run_ids[-2])
+                repetition = int(run_ids[-1].split('.')[0])
+                data.append([size, repetition, float(line.split()[-2])])
 
     return data
 
-def load_milc(path: Path):
+def load_milc(path: Path, include_path: bool = False):
 
     data = []
 
@@ -75,8 +79,18 @@ def load_milc(path: Path):
 
         with open(f, 'r') as fp:
             for line in lines_that_start_with("Elapsed total time", fp):
-                size = int(f.split('_')[-2])
-                data.append([size, float(line.split()[-1])])
+
+                # format: milc_{size}_{rep}.out 
+                run_ids = f.split('_')
+                size = int(run_ids[-2])
+                repetition = int(run_ids[-1].split('.')[0])
+                
+                time = float(line.split()[-1])
+
+                d = [size, repetition, time]
+                if include_path:
+                    d.append(f)
+                data.append(d)
 
     return data
 
@@ -90,7 +104,7 @@ def load_baseline_lulesh(path: Path, ranks: int, spread: Optional[int] = None):
         path = os.path.join(path, f'lulesh_{ranks}')
 
     d = load_lulesh(path)
-    df = pd.DataFrame(data=d, columns=['size', 'time'])
+    df = pd.DataFrame(data=d, columns=['size', 'repetition', 'time'])
     df['ranks_per_node'] = spread
     df['ranks'] = ranks
 
@@ -120,7 +134,7 @@ def load_baseline_milc(path: Path, ranks: int):
 
     spread = 32
     data = load_milc(os.path.join(path, f'{Benchmark.MILC.value}_{ranks}', f'{Benchmark.MILC.value}_{spread}'))
-    df = pd.DataFrame(data=data, columns=['size', 'time'])
+    df = pd.DataFrame(data=data, columns=['size', 'repetition', 'time'])
     df['ranks'] = ranks
     df['ranks_per_node'] = spread
 
@@ -143,7 +157,7 @@ def load_baseline_data(system: System, benchmark: Benchmark, *args, **kwargs):
 
     return df
 
-def load_cpu_colocation_nas(path: Path, benchmark: Benchmark, ranks: int):
+def load_cpu_colocation_nas(path: Path, benchmark: Benchmark, ranks: int, include_path: bool = False):
 
     if benchmark not in [Benchmark.LULESH, Benchmark.MILC]:
         raise RuntimeError()
@@ -160,9 +174,15 @@ def load_cpu_colocation_nas(path: Path, benchmark: Benchmark, ranks: int):
         bench_size = name.split('_')[3]
 
         if benchmark == Benchmark.LULESH:
-            df = pd.DataFrame(data=load_lulesh(dir), columns=['size', 'time'])
+            df = pd.DataFrame(
+                data=load_lulesh(dir),
+                columns=['size', 'repetition', 'time']
+            )
         elif benchmark == Benchmark.MILC:
-            df = pd.DataFrame(data=load_milc(dir), columns=['size', 'time'])
+            df = pd.DataFrame(
+                data=load_milc(dir),
+                columns=['size', 'repetition', 'time']
+            )
         else:
             raise RuntimeError()
         df['colocated_benchmark'] = app
@@ -176,19 +196,39 @@ def load_cpu_colocation_nas(path: Path, benchmark: Benchmark, ranks: int):
 
             with open(f, 'r') as fp:
                 for line in lines_that_contain("in seconds", fp):
+ 
+                    # format: milc_{size}_{rep}.out 
+                    nas_file = os.path.basename(f).split('_')
+                    repetition = int(nas_file[-1].split('.')[0])
+                    colocated_repetition = int(nas_file[-1].split('.')[1])
+
                     nas_data.append([
-                        ranks, l_size, bench_size,
-                        app, NAS_RANKS_MAPPING[app][bench_size],
-                        float(line.split()[-1])
+                        ranks, l_size, repetition,
+                        str(bench_size), str(app), NAS_RANKS_MAPPING[app][bench_size],
+                        colocated_repetition,
+                        float(line.split()[-1]),
+                        f
                     ])
 
-    #batch_app = pd.DataFrame(data=data, columns=['size', 'colocated_benchmark_size', 'colocated_benchmark', 'time'])
     batch_app = pd.concat(data)
     batch_app['ranks'] = ranks
 
-    colocated_nas = pd.DataFrame(data=nas_data, columns=['batch_benchmark_ranks', 'batch_benchmark_size', 'size', 'benchmark', 'ranks', 'time'])
+    colocated_nas = pd.DataFrame(
+        data=nas_data,
+        columns=[
+            'batch_benchmark_ranks',
+            'batch_benchmark_size',
+            'batch_benchmark_repetition',
+            'size',
+            'benchmark',
+            'ranks',
+            'repetition',
+            'time',
+            'path'
+        ]
+    )
 
-    return batch_app, colocated_nas
+    return os.path.join(path, f'{benchmark.value}_{ranks}'), batch_app, colocated_nas
 
 def load_cpu_colocation_data(system: System, benchmark: Benchmark, colocated_benchmark: Benchmark, *args, **kwargs):
 
