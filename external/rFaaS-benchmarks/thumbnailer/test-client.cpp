@@ -9,6 +9,13 @@ extern "C" uint32_t thumbnailer(void* args, uint32_t size, void* res);
 int main(int argc, char ** argv)
 {
   std::ifstream input(argv[1], std::ios::binary | std::ios::ate);
+
+  if(input.fail())
+  {
+    std::cerr << "Couldnt read file " << argv[1] << std::endl;
+    return 1;
+  }
+
   std::streamsize size = input.tellg();
   input.seekg(0, std::ios::beg);
   int result;

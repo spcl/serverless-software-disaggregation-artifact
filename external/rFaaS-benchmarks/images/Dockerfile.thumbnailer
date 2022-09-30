@@ -5,7 +5,7 @@ FROM spcleth/hpc-disagg:rfaas-dependencies-opencv as builder
 COPY thumbnailer/ ${HOME}/thumbnailer/
 RUN mkdir build_img && cd build_img && cmake -DCMAKE_PREFIX_PATH="/opt/opencv/lib64/cmake/opencv4" -DCMAKE_BUILD_TYPE=Release ../thumbnailer && make
 
-FROM ubuntu:21.04
+FROM ubuntu:22.04
 
 COPY --from=builder /opt/ /opt/
 ENV LD_LIBRARY_PATH=/function

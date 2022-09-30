@@ -7,11 +7,10 @@ COPY --from=opencv /opt/ /opt/
 COPY image-recognition/ ${HOME}/image-recognition/
 RUN mkdir build_img && cd build_img && cmake -DCMAKE_PREFIX_PATH="/opt/opencv/lib64/cmake/opencv4;/opt/torchvision/share/cmake/TorchVision;/opt/libtorch/share/cmake/Torch" -DCMAKE_BUILD_TYPE=Release ../image-recognition && make
 
-FROM ubuntu:21.04
+FROM ubuntu:22.04
 
 COPY --from=builder /opt/ /opt/
 ENV LD_LIBRARY_PATH=/function
-
 
 RUN mkdir ${HOME}/function
 COPY --from=builder ${HOME}/build_img/test-client ${HOME}/function/
