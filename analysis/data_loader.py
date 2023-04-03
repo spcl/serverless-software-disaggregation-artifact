@@ -68,6 +68,8 @@ def load_lulesh(path: Path):
                 size = int(run_ids[-2])
                 repetition = int(run_ids[-1].split('.')[0])
                 data.append([size, repetition, float(line.split()[-2])])
+    if len(data) == 0:
+        print(f"No data found at {path}")
 
     return data
 
@@ -91,6 +93,8 @@ def load_milc(path: Path, include_path: bool = False):
                 if include_path:
                     d.append(f)
                 data.append(d)
+    if len(data) == 0:
+        print(f"No data found at {path}")
 
     return data
 
