@@ -14,8 +14,7 @@
 #SBATCH --output=lulesh.%A.%a.o
 #SBATCH --error=lulesh.%A.%a.e
 #SBATCH --reservation=spcl
-#SBATCH --nodelist=ault[01-02]
-#SBATCH --array=[1-9]
+#SBATCH --array=[0-9]
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 #export CRAY_CUDA_MPS=1
