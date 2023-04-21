@@ -1,0 +1,143 @@
+
+\documentclass{article}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+\section{Artifact Identification}
+
+The main contribution of the paper is a new co-location approach that combines batch jobs
+and FaaS-like workloads.
+We show that the combination of both workloads improves system throughput, and we evaluate it with
+a mix of HPC applications.
+The performance results of co-located workloads provided with the artifact are essential to
+all results presented in the paper.
+
+The experiments were conducted on two systems:
+\begin{enumerate}
+  \item \textbf{Ault} Nodes each with two 18-core Intel Xeon619 Gold 6154 CPU @ 3.00GHz and 377 GB of memory. Nodes are equipped with Mellanox MT27800 Family NIC with a 100 Gb/s Single-Port link that is configured with RoCEv2 support. We measure a latency of 3.69 $\mu$s and a bandwidth of 11.69 GiB/s between nodes. We use Docker 20.10.5 with executor image ubuntu:20.04, and our software is implemented in C++, using g++ 10.2, and OpenMPI 4.1.
+  \item \textbf{Daint} We deploy CPU and GPU co-location jobs on the supercomputing system Piz Daint. The multi-core628 nodes have two 18-core Intel Xeon E5-2695 v4 @ 2.10GHz and 128 GB of memory. The GPU nodes have one 12-core Intel Xeon E5-2690 v3 @ 2.60GHz with 64 GB of memory, and an NVIDIA Tesla P100 GPU. All nodes are connected with the Cray Aries interconnect, and we implement a new backend in rFaaS with libfabrics to target the uGNI network communication library. We use Clang 12 and Cray MPICH.
+\end{enumerate}
+
+In the artifact, we evaluate one microbenchmark and three different classes of experiments.
+For each benchmark, we evaluate the performance interference by measuring application slowdown when executed in co-location. For each experiment, we measure the median and standard deviation.
+
+\textbf{Microbenchmarks} For these benchmarks, we use rFaaS from branch "libfabric-sarus", commit "a09ecb4716916484a925b2a5c34a08fc27828348".
+
+\textbf{CPU co-location benchmark} We use the LULESH application as a classical batch job, using 64 MPI processes and various problem sizes. We deploy LULESH on 2 Piz Daint nodes, using 32 out of the 36 available cores. Then,  we run concurrently NAS benchmarks in the Sarus container on the remaining cores, using CPU binding of tasks. We run the NAS benchmarks with 1, 2, 4, and 8 MPI processes, spread equally across two nodes, and launch new executions as soon as the previous ones finish.
+
+\textbf{GPU co-location benchmark} We also run the GPU version of LULESH on three GPU nodes of the Piz Daint system using 27 ranks and 9 cores out of the 12 available on each node. Then, we run Rodinia GPU benchmarks in a Sarus container on the same node. The deployment follows the same logic as CPU co-location: invoke GPU applications until the batch job finishes.
+
+\textbf{RMA function benchmark} We run LULESH on one Ault node, using 27 out of 36 available cores since the benchmark configuration is restricted to cubic numbers and the remaining cores must stay idle. We deploy rFaaS with remote memory function in a Docker container, running on the same node. The rFaaS function allocates 1 GB of pinned memory available for RDMA operations. While running LULESH, we run the benchmark application on another node that executes periodic RDMA read and write operations.
+For that benchmark, we use rFaaS version that is provided with the artifact repository.
+
+\textbf{rFaaS Offloading} We run the Black-Scholes benchmark on the Daint system using one node,
+and we run the OpenMC benchmark on the Ault system using one node.
+
+\section{Reproducibility of Experiments}
+
+The artifact repository consists of several components
+\begin{itemize}
+  \item \textbf{analysis} - Jupyter notebooks (see below for details).
+  \item \textbf{baseline} - scripts used to generate baseline measurements for benchmarks used.
+  \item \textbf{colocation\_cpu, colocation\_gpu, colocation\_rma} - scripts used to generate co-location benchmarks.
+  \item \textbf{data} - contains results used in the paper.
+  \item \textbf{external} - contains benchmarks and build scripts for benchmarks used in the paper.
+  \item \textbf{microbenchmarks} - contains scripts, data and analysis of rFaaS benchmarks.
+  \item \textbf{src} - contains source code of rFaaS modifications and build scripts for rFaaS support of libfabric.
+\end{itemize}
+
+Our experiments include non-standard SLURM submission processes that require a combination of salloc and srun to achieve node sharing, even on systems that do not enable sharing by default.
+We provide scheduling scripts and step-by-step instructions of repeating experiments.
+However, these need to be adjusted for the configuration of the system used.
+
+The following software should be available on the system.
+\begin{itemize}
+  \item SLURM batch system.
+  \item Sarus containers (CPU, GPU benchmarks).
+  \item Docker containers (RMA benchmarks).
+\end{itemize}
+
+\subsection{CPU Co-location}
+
+This benchmark produces Figures 7 and 8 from the paper.
+The benchmark consists of three parts: running unmodified LULESH and MILC benchmarks standalone,
+running NAS benchmarks in Sarus containers standalone, and running LULESH/MILC in co-location with
+NAS benchmarks executed in Sarus containers.
+
+The benchmark is executed on CPU nodes with the following configuration:
+\begin{itemize}
+  \item Repetitions = 20
+  \item LULESH MPI ranks = 64
+  \item MILC MPI ranks = 64
+  \item LULESH size values = 15, 18, 20, 25
+  \item MILC size values = 96, 128
+\end{itemize}
+Repeating the benchmark in all configurations should take no more than 30 hours (LULESH) and 40 hours (MILC).
+
+To run benchmarks, follow instructions provided in the dedicated README in \texttt{colocation\_cpu/README.md}.
+The scripts build all applications and schedule SLURM jobs.
+
+\subsection{RMA Functions}
+
+This benchmark produces Figure 9 from the paper.
+The benchmark consists of three parts: running unmodified LULESH and MILC benchmarks standalone,
+and running LULESH/MILC in co-location with rFaaS serving RMA functions.
+
+The benchmark is executed on CPU nodes with the following configuration:
+\begin{itemize}
+\item Repetitions = 10
+\item LULESH MPI ranks = 27, 125
+\item MILC MPI ranks = 32
+\item LULESH size values = 15, 18, 20, 25
+\item MILC size values = 32, 64, 96, 128
+\end{itemize}
+Repeating the benchmark in all configurations should take no more than 30 hours (LULESH) and 40 hours (MILC).
+
+To run benchmarks, follow instructions provided in the dedicated README in \texttt{colocation\_rma/README.md}.
+The scripts build all applications and schedule SLURM jobs.
+
+\subsection{GPU Co-location}
+
+This benchmark produces Figure 10 from the paper.
+The benchmark consists of three parts: running unmodified LULESH and MILC benchmarks standalone,
+running Rodinia benchmarks in Sarus containers standalone, and running LULESH/MILC in co-location with
+Rodinia benchmarks executed in Sarus containers.
+
+The benchmark is executed on GPU nodes with the following configuration:
+\begin{itemize}
+\item Repetitions = 20
+\item LULESH MPI ranks = 27
+\item MILC MPI ranks = 32
+\item LULESH size values = 15, 18, 20, 25
+\item MILC size values = 32, 64, 96, 128
+\end{itemize}
+Repeating the benchmark in all configurations should take no more than 15 hours (LULESH) and 35 hours (MILC).
+
+To run benchmarks, follow instructions provided in the dedicated README in \texttt{colocation\_gpu/README.md}.
+The scripts build all applications and schedule SLURM jobs.
+
+\subsection{rFaaS offloading}
+
+This benchmark produces Figure 11 from the paper.
+The benchmark consists of three parts: running unmodified application with OpenMP parallelisation,
+running modified application with rFaaS offloading,
+and running modified application with hybrid OpenMP parallelisation and rFaaS offloading.
+
+The benchmark is executed on CPU nodes with the following configuration:
+\begin{itemize}
+\item Black-Scholes repetitions = 100
+\item Black-Scholes size = native
+\item OpenMC repetitions = 10
+\item OpenMC size = 1000, 10000
+\item OpenMP threads = 1, 2, 4, 8, 16, 32
+\end{itemize}
+Repeating the benchmark in all configurations should take no more than 2 hours.
+
+To run benchmarks, follow instructions provided in the dedicated README in \texttt{faas\_offloading/README.md}.
+The scripts build all applications and schedule SLURM jobs.
+
+\end{document}
+
+
