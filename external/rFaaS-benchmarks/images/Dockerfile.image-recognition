@@ -11,6 +11,7 @@ FROM ubuntu:22.04
 
 COPY --from=builder /opt/ /opt/
 ENV LD_LIBRARY_PATH=/function
+ENV LIBRARY_PATH=/function/libimage-recognition.so
 
 RUN mkdir ${HOME}/function
 COPY --from=builder ${HOME}/build_img/test-client ${HOME}/function/
