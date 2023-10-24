@@ -45,8 +45,8 @@ exec: $(OBJS) bt.o bt_lib.o
 bt-bt: ${OBJS} bt.o btio.o
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} bt.o btio.o ${FMPI_LIB}
 
-bt-lib: ${OBJS} bt_lib.o btio.o
-	${FLINK} ${FLINKFLAGS}  -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} bt_lib.o btio.o ${FMPI_LIB}
+bt-lib: ${OBJS} bt_lib.o btio.o lib.o
+	${FLINK} ${FLINKFLAGS}  -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} bt_lib.o lib.o btio.o ${FMPI_LIB}
 
 bt-full: ${OBJS} full_mpiio.o btio_common.o
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM}.mpi_io_full ${OBJS} btio_common.o full_mpiio.o ${FMPI_LIB}
@@ -72,6 +72,8 @@ tester: tester.o
 
 
 bt.o:             bt.f90  bt_data.o mpinpb.o
+bt_lib.o:         bt_lib.f90  bt_data.o mpinpb.o
+lib.o:         		lib.c bt_data.o mpinpb.o
 make_set.o:       make_set.f90  bt_data.o mpinpb.o
 initialize.o:     initialize.f90  bt_data.o
 exact_solution.o: exact_solution.f90  bt_data.o
@@ -100,5 +102,5 @@ bt_data.o:        bt_data$(VEC).f90 mpinpb.o npbparams.h
 mpinpb.o:         mpinpb.f90
 
 clean:
-	- rm -f *.o *.mod *~ mputil*
+	- rm -f *.o *.mod *~ mputil* *.so
 	- rm -f  npbparams.h core

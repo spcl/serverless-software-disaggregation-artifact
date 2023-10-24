@@ -14,14 +14,15 @@ ${PROGRAM}: config ${OBJS} mg.o mg-lib tester
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} mg.o ${FMPI_LIB}
 
 # Special build step for a shared library
-mg-lib: config ${OBJS} mg_lib.o
-	${FLINK} ${FLINKFLAGS} -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} mg_lib.o ${FMPI_LIB}
+mg-lib: config ${OBJS} mg_lib.o lib.o
+	${FLINK} ${FLINKFLAGS} -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} lib.o mg_lib.o ${FMPI_LIB}
 
 .f90.o:
 	${FCOMPILE} $<
 
 mg.o:		mg.f90  mg_data.o mpinpb.o
 mg_lib.o: 	mg_lib.f90  mg_data.o mpinpb.o
+lib.o:         		lib.c mg_data.o mpinpb.o
 mg_data.o:	mg_data.f90 mpinpb.o npbparams.h
 mpinpb.o:	mpinpb.f90
 

@@ -32,8 +32,8 @@ ${PROGRAM}: config
 exec: $(OBJS) lu.o
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} lu.o ${FMPI_LIB}
 
-lu-lib: ${OBJS} lu_lib.o
-	${FLINK} ${FLINKFLAGS}  -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} lu_lib.o ${FMPI_LIB}
+lu-lib: ${OBJS} lu_lib.o lib.o
+	${FLINK} ${FLINKFLAGS}  -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} lu_lib.o lib.o ${FMPI_LIB}
 
 # Local tester app that uses the library version to execute code.
 tester: tester.o
@@ -46,6 +46,7 @@ tester: tester.o
 	${CCOMPILE} $<
 
 lu.o:		lu.f90 lu_data.o mpinpb.o
+lib.o:         		lib.c lu_data.o mpinpb.o
 bcast_inputs.o:	bcast_inputs.f90 lu_data.o mpinpb.o
 blts$(VEC).o:	blts$(VEC).f90 lu_data.o
 buts$(VEC).o:	buts$(VEC).f90 lu_data.o

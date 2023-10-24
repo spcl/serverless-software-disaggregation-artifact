@@ -134,6 +134,7 @@
       implicit none
 
       integer ios, ierr
+      character(64) errmsg
 
       MAX_CELL_DIM = (problem_size/maxcells)+1
 
@@ -143,12 +144,16 @@
 
       BUF_SIZE = MAX_CELL_DIM*MAX_CELL_DIM*(maxcells-1)*60+1
 
+      if (allocated(cell_coord)) then 
+        return
+      endif
+
       allocate (  &
      &         cell_coord (3,maxcells), cell_low (3,maxcells),  &
      &         cell_high  (3,maxcells), cell_size(3,maxcells),  &
      &         start      (3,maxcells), end      (3,maxcells),  &
      &         slice      (3,maxcells),  &
-     &         stat = ios)
+     &         stat = ios, errmsg = errmsg)
 
       if (ios .eq. 0) allocate (  &
      &   forcing (5,   0:IMAX-1, 0:JMAX-1, 0:KMAX-1, maxcells),  &
@@ -157,21 +162,21 @@
      &   lhsc    (5,5,-1:IMAX-1,-1:JMAX-1,-1:KMAX-1, maxcells),  &
      &   backsub_info (5, 0:MAX_CELL_DIM, 0:MAX_CELL_DIM, maxcells),  &
      &   in_buffer(BUF_SIZE), out_buffer(BUF_SIZE),  &
-     &         stat = ios)
+     &         stat = ios, errmsg = errmsg)
 
       if (ios .eq. 0) allocate (  &
      &         cv  (-2:MAX_CELL_DIM+1),  rhon(-2:MAX_CELL_DIM+1),  &
      &         rhos(-2:MAX_CELL_DIM+1),  rhoq(-2:MAX_CELL_DIM+1),  &
      &         cuf (-2:MAX_CELL_DIM+1),     q(-2:MAX_CELL_DIM+1),  &
      &         ue  (-2:MAX_CELL_DIM+1,5), buf(-2:MAX_CELL_DIM+1,5),  &
-     &         stat = ios)
+     &         stat = ios, errmsg = errmsg)
 
       if (ios .eq. 0) allocate (  &
      &         fjac(5, 5, -2:MAX_CELL_DIM+1),  &
      &         njac(5, 5, -2:MAX_CELL_DIM+1),  &
      &         lhsa(5, 5, -1:MAX_CELL_DIM),  &
      &         lhsb(5, 5, -1:MAX_CELL_DIM),  &
-     &         stat = ios)
+     &         stat = ios, errmsg = errmsg)
 
       if (ios .eq. 0) allocate (  &
      &         us    (-1:IMAX, -1:JMAX, -1:KMAX, maxcells),  &
@@ -180,10 +185,10 @@
      &         qs    (-1:IMAX, -1:JMAX, -1:KMAX, maxcells),  &
      &         rho_i (-1:IMAX, -1:JMAX, -1:KMAX, maxcells),  &
      &         square(-1:IMAX, -1:JMAX, -1:KMAX, maxcells),  &
-     &         stat = ios)
+     &         stat = ios, errmsg = errmsg)
 
       if (ios .ne. 0) then
-         write(*,*) 'Error encountered in allocating space'
+         write(*,*) 'Error encountered in allocating space', ios, ' ', ierr, ' ', errmsg
          call MPI_Abort(MPI_COMM_WORLD, MPI_ERR_OTHER, ierr)
          stop
       endif

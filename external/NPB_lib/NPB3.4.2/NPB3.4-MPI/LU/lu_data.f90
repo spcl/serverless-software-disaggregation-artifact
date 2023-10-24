@@ -157,6 +157,9 @@
       implicit none
 
       integer ios, ierr
+      if (allocated(u)) then 
+        return
+      endif
 
 !---------------------------------------------------------------------
 ! parameters (isiz1, isiz2, isiz3) are set in proc_grid

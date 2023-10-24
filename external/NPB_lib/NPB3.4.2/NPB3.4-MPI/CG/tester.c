@@ -1,10 +1,15 @@
+#include <stddef.h>
+#include <stdint.h>
 
-void nas_cg();
+uint32_t rfaas_function(void* args, uint32_t size, void* res);
 
 int main(int argc, char ** argv)
 {
-
-  nas_cg();
+  rfaas_function(NULL, 0, NULL);
+  rfaas_function(NULL, 0, NULL);
+  rfaas_function(NULL, 0, NULL);
+  rfaas_function(NULL, 0, NULL);
+  rfaas_function(NULL, 0, NULL);
 
   return 0;
 }

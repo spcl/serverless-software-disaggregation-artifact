@@ -1,4 +1,3 @@
 #!/bin/bash
 
-docker build -f Dockerfile -t spcleth/hpc-disagg:nas-lib .
-
+docker build --progress=plain -f Dockerfile -t spcleth/hpc-disagg:nas-lib .

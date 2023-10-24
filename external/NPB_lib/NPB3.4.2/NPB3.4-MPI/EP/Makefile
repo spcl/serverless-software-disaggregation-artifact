@@ -13,8 +13,8 @@ ${PROGRAM}: config ${OBJS} ep.o ep-lib tester
 	${FLINK} ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} ep.o ${FMPI_LIB}
 
 # Special build step for a shared library
-ep-lib: config ${OBJS} ep_lib.o
-	${FLINK} ${FLINKFLAGS} -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} ep_lib.o ${FMPI_LIB}
+ep-lib: config ${OBJS} ep_lib.o lib.o
+	${FLINK} ${FLINKFLAGS} -shared -fPIC -o ${BINDIR}/lib$(notdir ${PROGRAM}).so ${OBJS} ep_lib.o lib.o ${FMPI_LIB}
 
 .f90.o:
 	${FCOMPILE} $<
@@ -24,6 +24,7 @@ ep-lib: config ${OBJS} ep_lib.o
 
 ep.o:		ep.f90 ep_data.o mpinpb.o
 ep_lib.o:		ep_lib.f90 ep_data.o mpinpb.o
+lib.o:      lib.c ep_data.o mpinpb.o
 ep_data.o:	ep_data.f90 npbparams.h
 verify.o:	verify.f90
 mpinpb.o:	mpinpb.f90
