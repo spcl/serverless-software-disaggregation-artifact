@@ -1,0 +1,48 @@
+{
+  "config": {
+    "rdma_device": "ipogif0",
+    "rdma_device_port": 10000,
+    "resource_manager_address": "148.187.37.1",
+    "resource_manager_port": 10000,
+    "resource_manager_secret": 42,
+    "node_name": "test",
+    "rdma-sleep": true
+  },
+  "executor": {
+    "sandbox_type": "sarus",
+    "repetitions": 50,
+    "warmup_iters": 0,
+    "pin_threads": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 42, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+  },
+  "sandbox-configuration": [
+    {
+      "key": "sarus",
+      "value": {
+        "devices": [
+          "/dev/kgni0", "/dev/kdreg"
+        ],
+        "mounts": [
+          "/opt/cray",
+          "/tmp/drcc.sock",
+          "/etc/opt/cray/rdma-credentials",
+          "/etc/alternatives/cray-ugni",
+          "/etc/alternatives/cray-xpmem",
+          "/etc/alternatives/cray-alps",
+          "/etc/alternatives/cray-rca",
+          "/etc/alternatives/cray-udreg",
+          "/etc/alternatives/cray-wlm_detect"
+        ],
+        "mount_filesystem": [
+          "/scratch/snx3000/{user}"
+        ],
+        "env": [
+          {
+            "key": "LD_LIBRARY_PATH",
+            "value": "/opt/cray/xpmem/default/lib64/;/opt/cray/udreg/default/lib64;/opt/cray/alps/default/lib64;/opt/cray/wlm_detect/default/lib64/;/opt/cray/rca/default/lib64"
+          }
+        ]
+      }
+    }
+  ]
+}
+
