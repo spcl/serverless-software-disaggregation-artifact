@@ -38,6 +38,12 @@ The following software should be available on the system:
 * Sarus containers (CPU, GPU benchmarks).
 * Docker containers (RMA benchmarks).
 
+## Datasets
+
+* `data/daint_utilization` - contains processed SLURM traces from Piz Daint.
+* `data/faas_io` - contains data for the microbenchmark comparing cloud storage and PFS I/O.
+* `microbenchmarks/latency_measurements` - contains data for libfabric benchmarks.
+
 ## Benchmarks
 
 #### RMA Functions
@@ -56,7 +62,7 @@ The steps needed to run the benchmark are available in a seperate [README](coloc
 
 In `analysis`, there are several Jupyter notebooks used to produce plots from the paper:
 
-* `colocation_cpu.ipynb` - produces CPU co-location plots.
+* `colocation_cpu_lulesh.ipynb` and `colocation_cpu_milc.ipynb` - produces CPU co-location plots.
 
 * `colocation_gpu.ipynb` - produces GPU co-location plots.
 
@@ -64,8 +70,8 @@ In `analysis`, there are several Jupyter notebooks used to produce plots from th
 
 * `daint_utilization.ipynb` - produces Piz Daint utilization plot.
 
-* `metrics_utilization.ipynb` - produces cost comparison of system utilization.
+* `microbenchmark_latency.ipynb` and `microbenchmark_faas_io.ipynb` - produces microbenchmark plots.
 
-* `quality_analysis.ipynb` - analyze produced data to verify that all repetitions are correct.
+* `blackscholes.ipynb` and `openmc.ipynb` - produces results for FaaS offloading with serverless.
 
 
