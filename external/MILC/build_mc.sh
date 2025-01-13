@@ -2,11 +2,21 @@
 
 module switch daint-gpu daint-mc
 module load daint-mc
-cp -r milc_qcd-7.8.1 milc_qcd-7.8.1-mc
-cp Makefile milc_qcd-7.8.1-mc
-cp Makefile milc_qcd-7.8.1-mc/ks_imp_dyn
-cp control.c milc_qcd-7.8.1-mc/ks_imp_dyn
-cd milc_qcd-7.8.1-mc/ks_imp_dyn
+module switch PrgEnv-cray PrgEnv-gnu
+
+DESTINATION=$1
+
+if [ -z "$DESTINATION" ];
+then
+  DESTINATION=$(pwd)
+fi
+
+mkdir -p ${DESTINATION}
+cp -r milc_qcd-7.8.1 ${DESTINATION}/milc_qcd-7.8.1-mc
+cp Makefile ${DESTINATION}/milc_qcd-7.8.1-mc
+cp Makefile ${DESTINATION}/milc_qcd-7.8.1-mc/ks_imp_dyn
+cp control.c ${DESTINATION}/milc_qcd-7.8.1-mc/ks_imp_dyn
+cd ${DESTINATION}/milc_qcd-7.8.1-mc/ks_imp_dyn
 make clean
 make
 # repeat after failed test
