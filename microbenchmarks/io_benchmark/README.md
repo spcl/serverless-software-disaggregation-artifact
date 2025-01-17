@@ -1,3 +1,6 @@
+
+Download Minio release. We used the version: `RELEASE.2023-09-30T07-02-29Z (go1.21.1 linux/amd64)`
+
 Generating files using `dd if=/dev/urandom of=random_file.xgb bs=1M count=1024`. Verified using: `head -c 100 random_file.xgb`.
 
 Generating the proper keys for minio:
