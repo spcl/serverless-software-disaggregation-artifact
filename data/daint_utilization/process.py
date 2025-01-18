@@ -3,9 +3,7 @@
 import glob
 import os
 import sys
-from tqdm import tqdm
 import pandas as pd
-import numpy as np
 import multiprocessing
 
 def split(a, n):
@@ -21,104 +19,74 @@ def extract(x):
 
     return pd.Series([idle_cpus, max_cpus, free_mem, total_mem], index=['idle', 'max', 'free_mem', 'total_mem'])
 
-def work(files, out):
-
-    dfs = []
+def work(id_, files,out):
+    print(f"Parse {len(files)} on {id_}, save to {out}")
+    rows = []
     count = 0
-
-    idle_nodes = pd.DataFrame([], columns = ['NODELIST', 'queries_idle', 'duration_idle', 'prev_query_len', 'next_query_len'])
-    #idle_nodes.set_index('NODELIST')
-    #print(idle_nodes)
-
-    prev_date = None
-    no_longer_idle = None
-
-    for idx, f in enumerate(tqdm(files)):
-
+    for f in files:
+        #print(f)
+        d = os.path.basename(f).split('_')
+        #print(d)
+        date = f"{d[3]}-{d[2]}-{d[1]} {d[4]}:{d[5]}:{d[6]}"
+        #print(date)
+        #print(f"Process {id_} {f}")
         try:
             data = pd.read_csv(f, delim_whitespace=True)
         except pd.errors.EmptyDataError:
             print(f"Skip empty {f}")
             continue
 
-        d = os.path.basename(f).split('_')
-        date = f"{d[3]}-{d[2]}-{d[1]} {d[4]}:{d[5]}:{d[6]}"
-        np_date = np.datetime64(date)
-        if prev_date != None:
-            query_len = (np_date - prev_date).item().total_seconds()
-        else:
-            query_len = 0
-
-        # first process rows to be finished - set the following query length
-        #if no_longer_idle is not None and no_longer_idle.shape[0] > 0:
-        #    no_longer_idle['next_query_len'] = query_len
-        #    dfs.append(no_longer_idle)
-
         if(data.empty):
             print(f"Skip {f}")
             continue
+        #print(data.head(20))
         data.drop_duplicates(subset=['NODELIST'], inplace=True)
+        #data.set_index(['NODELIST'], inplace=True)
+        #print(data.head(20))
 
         idle_subset = data.loc[data['STATE'] == 'idle']
-        #idle_subset.set_index('NODELIST')
+        #print(f"{id_} Idle nodes: {len(idle_subset)}")
+        idle_data = idle_subset.apply(extract, axis=1)
 
-        #print(f)
-        #print('IDLE', idle_subset)
-        no_longer_idle = idle_nodes.merge(idle_subset['NODELIST'], on='NODELIST', how='left', indicator=True)
-        no_longer_idle = no_longer_idle.loc[no_longer_idle['_merge'] == 'left_only']
-        no_longer_idle.drop('_merge', axis=1, inplace=True)
-        #print('NO LONGER IDLE', no_longer_idle)
+        allocated_subset = data.loc[data['STATE'] == 'allocated']
+        #print(f"{id_} Allocated nodes: {len(allocated_subset)}")
+        alloc_data = allocated_subset.apply(extract, axis=1)
+        #print(alloc_data.head(10))
 
-        # merge the new idle nodes with existing idle nodes
-        # old nodes have our columns defined and just need an addition
-        # new nodes have NaNs and require a proper a initialization
-        still_idle = idle_subset.merge(idle_nodes, on='NODELIST', how='left', suffixes = ('', '_y'))
-        still_idle.drop(still_idle.filter(regex='_y$').columns, axis=1, inplace=True)
-        #print('STILL IDLE', still_idle)
-      
-        # add the duration between queries for 'old' nodes - the node was idle
-        still_idle.loc[still_idle['duration_idle'].notnull(), 'duration_idle'] += query_len
-        # set the preceding query length for 'new' nodes
-        still_idle['prev_query_len'].fillna(query_len, inplace=True)
-        # for 'new' nodes, zero the other columns
-        still_idle.fillna(0, inplace=True)
-        # increment queries idle for each one of them
-        still_idle['queries_idle'] += 1
+        df = pd.concat([idle_data, alloc_data])
+        #print(df.head())
+        #print(alloc_data)
+        #print(df)
+        alloc_stat = alloc_data['idle'].sum() / df['max'].sum()
+        idle_alloc_stat = idle_data['idle'].sum() / df['max'].sum()
+        #print(alloc_data['free_mem'].sum(), idle_data['free_mem'].sum(), df['total_mem'].sum())
+        mem_stat = alloc_data['free_mem'].sum() / df['total_mem'].sum()
+        idle_mem_stat = idle_data['free_mem'].sum() / df['total_mem'].sum()
+        #print(alloc_stat, mem_stat)
 
-        if no_longer_idle is not None and no_longer_idle.shape[0] > 0:
-            no_longer_idle['next_query_len'] = query_len
-            dfs.append(no_longer_idle)
+        other_subset = data.loc[(data['STATE'] != 'idle') & (data['STATE'] != 'allocated')]
+        #print(f"{id_} Other nodes: {len(other_subset)}")
+        #print(other_subset['STATE'].value_counts())
+        rows.append([date, idle_alloc_stat, alloc_stat, mem_stat, idle_mem_stat, allocated_subset.shape[0], idle_subset.shape[0], other_subset.shape[0], data.shape[0]])
+        count +=1
 
-        # ignore nodes idle from the beginning
-        #if idx > 0:
-        idle_nodes = still_idle
-        prev_date = np_date
-
-    # finish the leftovers
-    still_idle['next_query_len'] = 0
-    dfs.append(still_idle)
-    #if no_longer_idle is not None and no_longer_idle.shape[0] > 0:
-    #    no_longer_idle['next_query_len'] = 0
-    #    dfs.append(no_longer_idle)
-
-    # ignore the remaining idle samples - we do not have for long they will remain idle.
-
-    df = pd.concat(dfs, axis=0).reset_index(drop=True)
-
-    df['idle_cpus'] = df['CPUS(A/I/O/T)'].str.split('/').str[1].astype(int) / 2
-    df['max_cpus'] = df['CPUS(A/I/O/T)'].str.split('/').str[3].astype(int) / 2
-    df.drop(['CPUS(A/I/O/T)'], axis=1, inplace=True)
-
+        if count % 100 == 0:
+            print(f"Process {id_} finished {count} out of {len(files)}")
+    df = pd.DataFrame(rows, columns = ['date', 'idle_cpus', 'partially_idle_cpus', 'partially_free_mem', 'free_mem', 'allocated_nodes', 'idle_nodes', 'other_nodes', 'total_nodes'])
     #print(df)
     #print(os.path.join(out, f"out_{id_}.csv"))
-    df.to_csv(os.path.join(out, f"out.csv"))
+    df.to_csv(os.path.join(out, f"out_{id_}.csv"))
 
 
 in_dir = sys.argv[1]
 out = sys.argv[2]
+processes = int(sys.argv[3])
 files = list(glob.glob(os.path.join(in_dir, 'sinfo_*')))
-files.sort()
+files_processed = list(split(files, processes))
 print(f"Process {len(files)} from {in_dir}, save result to {out}")
+#files_processed)
 
-work(files, out)
+with multiprocessing.Pool(processes=processes) as pool:
+    results = pool.starmap(work, zip(range(processes), files_processed, [out]*processes))
+
 
